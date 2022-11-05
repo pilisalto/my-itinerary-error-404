@@ -17,7 +17,6 @@ export default function NavBar() {
             setMostarOcultar1(false)
         } 
     }
-    <AutoToTop/>
     return (
         <>       
             <div className='flex space-around align-center'>

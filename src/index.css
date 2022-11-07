@@ -299,6 +299,7 @@ body {
 .footer {
   width: 100%;
   min-height: 17vh;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   align-items: center;

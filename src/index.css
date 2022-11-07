@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+
+}
+
+.home1 {
+  width: 100%;
+  height: 100vh;
+}
+
+.home2 {
+  width: 100%;
+  height: 200vh;
+  background-color: #202328;
+  display: flex;
+  flex-direction: column;
+}
+
+.grow{
+  flex-grow: 1;
+}
+
+.nav_bar {
+  width: 100%;
+  height: 8vh;
+  background-color: opacity 0.6, #d9d9d9; 
+}
+
+.h1 {
+  font-size: 60px;
+}
+
+.h2 {
+  font-size: 45px;
+}
+
+.h3 {
+  font-size: 30px;
+}
+
+.h4 {
+  font-size: 25px;
+}
+
+.p, .a{
+  font-size: 16px;
+  color: #d9d9d9;
+  text-decoration: none;
+}
+
+.icons {
+  width: 20px;
+  height: 20px;
+}
+
+
+.resaltado {
+  color: #bd2424;
+}
+
+.boton1 {
+  font-size: ;
+}
+
+.boton2 {
+  font-size: ;
+}
+
+.boton3 {
+  font-size: ;
+}
+
+.logo {
+  width: 150px;
+  height: 50px;
+}
+
+.logo2 {
+  width: 150px;
+  height: 50px;
+}
+
+.card {
+  width: ;
+  height: ;
+  border-radius: 7px;
+}
+
+.card1 {
+  width: ;
+  height: ;
+  border-radius: 7px;
+}
+
+.footer {
+  width: 100%;
+  height: 17vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #202328;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+/*css  nuevas*/
+.flex{
+  display: flex;
+}
+.direction-column{
+  flex-direction: column;
+}
+.direction-row{
+  flex-direction: row;
+}
+.space-around{
+  justify-content: space-around;
+}
+.v100{
+  width: 100%;
+}
+.h100{
+  min-height: 100vh;
+}
+.image{
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+.card{
+  border: solid black;
+}
+.gap-5{
+  gap: 5;
+}
+.space-between{
+  justify-content: space-between;
+}
+.card1{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.wrap{
+  flex-wrap: wrap;
+}

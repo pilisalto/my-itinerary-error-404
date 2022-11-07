@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {Link} from "react-router-dom"
-import AutoToTop from './AutoToTop';
+
 
 export default function NavBar() {
     let [mostrarOcultar, setMostarOcultar] = useState(false)
@@ -25,7 +25,7 @@ export default function NavBar() {
                     {mostrarOcultar1 ? (
                         <>
                             <div className='flex '>
-                                <Link to="/index" >
+                                <Link to="/" >
                                 <button onClick={mostrar1}>Home</button>
                                 </Link>
                                 <Link to="/activities" >

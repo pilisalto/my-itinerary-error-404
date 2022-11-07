@@ -1,21 +1,66 @@
 import React from 'react'
-import CardsCity from './CardsCity'
+import CardsCity from './Cardscity'
 import citys from '../data/citys'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
 
 export default function Carousel() {
-
+    let [index, setIndex] = useState(0)
+    let [id,setId] = useState(0)
+    useEffect(
+        () => {
+            let idInterval = setInterval(
+                () => {
+                    next()
+                }, 5000
+            )
+            setId(idInterval)
+            return clearInterval(id)
+        }
+        , [index])
+    let next = () => {
+        if (index < citys.length - 4) {
+            setIndex(index += 4)
+        }
+        else {
+            setIndex(0)
+        }
+        clearInterval(id)
+    }
+    let prev = () => {
+        if (index > 0) {
+            setIndex(index -= 4)
+        }
+        else {
+            setIndex(citys.length - 4)
+        }
+        clearInterval(id)
+    }
     return (
-        <>
-            <div className='flex direction-column gap-5'>
-                <div className='flex direction-row space-around gap-5 wrap'>
-                    <CardsCity city={citys[0].name} img={citys[0].photo} place={citys[0].continent} />
-                    <CardsCity city={citys[1].name} img={citys[1].photo} place={citys[1].continent} />
-                </div>
-                <div className='flex direction-row space-around gap-5 wrap'>
-                    <CardsCity city={citys[2].name} img={citys[2].photo} place={citys[2].continent} />
-                    <CardsCity city={citys[3].name} img={citys[3].photo} place={citys[3].continent} />
-                </div>
-            </div>
-        </>   
+<>
+<div className='carousel'>
+    <div className='lflex direction-row space-around gap-5 wrap row_carousel'>
+        <Link className='none padding' to={"/city/" + citys[index].id}/>
+            <CardsCity className='padding' name={citys[index].name} photo={citys[index].photo} continent={citys[index].continent} />
+        <Link className='none padding'to={"/city/" + citys[index+1].id}>
+            <CardsCity className='padding' name={citys[index + 1].name} photo={citys[index + 1].photo} continent={citys[index + 1].continent} />
+        </Link>
+    </div>
+    <div className='flex direction-row space-around gap-5 wrap row_carousel'>
+        <button className='boton1 padding' onClick={prev}>Anterior</button>
+        <button className='boton1 padding' onClick={next}>Siguiente</button>
+    </div>
+    <div className='flex direction-row space-around gap-5 wrap row_carousel'>
+        <Link className='none padding' to={"/city/" + citys[index+2].id}>
+            <CardsCity className='padding' name={citys[index + 2].name} photo={citys[index + 2].photo} continent={citys[index + 2].continent} />
+        </Link>
+        <Link className='none ' to={"/city/" + citys[index+3].id}>
+            <CardsCity className='padding' name={citys[index + 3].name} photo={citys[index + 3].photo} continent={citys[index + 3].continent} />
+        </Link>
+    </div>
+</div>
+</>
     )
 }
+

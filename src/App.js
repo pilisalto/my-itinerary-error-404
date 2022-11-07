@@ -1,11 +1,12 @@
-
 import './App.css';
-import Layouts from "./layouts/Layouts"
+import Layouts from './layouts/Layouts';
+
 
 function App() {
   return (
     <div>
-        <Layouts/>
+        <Layouts>
+        </Layouts>
     </div>
   );
 }

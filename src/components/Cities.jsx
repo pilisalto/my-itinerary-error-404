@@ -8,53 +8,51 @@ import axios from 'axios'
 import { useEffect } from 'react'
 
 export default function Cities() {  
-  let [filcheck, setFilcheck] = useState("")
+  let [filcheck, setFilcheck] = useState([])
   let [inp, setInp] = useState("")
   let [api, setApi] = useState([])
   let [effect, setEffect] = useState()
-  let [ho, setHo] = useState()
+  let [ho, setHo] = useState([])
   
   useEffect(() => {
     setEffect(axios.get(`${BASE_URL}/api/cities`).then((res) => {
       (setApi(res.data.response))
     })
-      .catch(err => console.log(err)))
-      axios.get(`http://localhost:8000/api/cities/`)
-            .then(res => setHo(res.data.data))
-            .catch(err => console.log(err))
+      .catch(err => console.log(err)),
+      axios.get(`${BASE_URL}/api/cities`).then((res) => {
+        (setHo(res.data.response))
+      })
+        .catch(err => console.log(err))
+      )            
   },[])
+  
 
   
-  let checkbox = ([... new Set(api.map(e => e.continent))].map(s => <form><label>{s}<input type="checkbox" onClick={e => check(e.target.value)} value={s} ></input> </label></form >))
+  let checkbox = ([... new Set(ho.map(e => e.continent))].map(s => <form><label>{s}<input type="checkbox" onClick={e => check(e.target.value)} value={s} ></input> </label></form >))
   
 
 
   function check(e) {
-    if (filcheck.includes(e)) {
-      
-      setFilcheck(filcheck.replace(e, ""))
+    if (filcheck.indexOf(e)) {
+      let i = filcheck.indexOf(e)
+      setFilcheck(filcheck.splice(i,1))
     }
     else {
-      if (filcheck.length > 0) {
-        setFilcheck(filcheck = filcheck + "," + e)
-      }
-      else {
-        setFilcheck(e)
-      }
+        setFilcheck(filcheck.push(e))
     }  
-    setEffect(axios.get(`${BASE_URL}/api/cities?name=${inp}&continent=${filcheck}`).then((response) => {
+    console.log(filcheck.toString())
+    setEffect(axios.get(`${BASE_URL}/api/cities?name=${inp}&continent=${filcheck.toString()}`).then((response) => {
       setApi(response.data.response)
     })
       .catch(err => console.log(err)))   
   }
   function funInput(e) {
     setInp(e)
-    setEffect(axios.get(`${BASE_URL}/api/cities?name=${e}&continent=${filcheck}`).then((response) => {
+    setEffect(axios.get(`${BASE_URL}/api/cities?name=${e}&continent=${filcheck.toString()}`).then((response) => {
       setApi(response.data.response)
     })
       .catch(err => console.log(err)))
   }
- console.log(inp, filcheck)
   //console.log(api.response.map((e, b, c) => (<Link to={"/city/" + c[b]._id}><CityCard name={e.name} photo={e.photo} /></Link>)))
   //<CityCard name={e.name} photo={e.photo} continent={e.continent} population={e.population}/>
   return (

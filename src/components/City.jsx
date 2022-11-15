@@ -5,13 +5,32 @@ import Cardscity from './Cardscity'
 import activities from "../data/activities"
 import Itinirary from './Itinerary'
 import NavBar from './NavBar'
+import { useState } from 'react'
+import { BASE_URL } from '../../src/api/url'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 
 export default function DetailsCity() {
-  let {setIndex} = useParams()
-  let city = citys.find(a => a.id === setIndex)
-  let it = activities.filter(e => e.citiId ===setIndex)
+  let { setIndex } = useParams()
+  let [api, setApi] = useState([])
+  let [apiCo, setApiCo] =useState([])
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/api/cities/${setIndex}`).then((res) => {
+      (setApi(res.data.data))
+    })
+      .catch(err => console.log(err))
+    axios.get(`${BASE_URL}/api/itineraries`).then((res) => {
+      (setApiCo(res.data.data))
+    })
+      .catch(err => console.log(err))
+
+  }, [])
+  console.log(api)
+  let it = apiCo.filter(e => e.cityId === setIndex)
   let basc = ""
+
   if(it.length){
     basc = <>
     <Itinirary name={it[0].name} photo={it[0].photo[0]} descripcion={it[0].descripcion} price={it[0].price} />
@@ -23,15 +42,15 @@ export default function DetailsCity() {
   }
   return (
     <>
-    <div className='image_back4'>
-        <div><NavBar/></div>
-    <div className='home3'>
-    <div className='cards_flex column'>
-    <Cardscity className='cards_flex none column' name={city.name} photo={city.photo} continent={city.continent} population={city.population} text={"Population: "}/>
-    {basc}
-    </div>
-    </div>
-    </div>
+      <div className='image_back4'>
+        <div><NavBar /></div>
+        <div className='home3'>
+          <div className='cards_flex column'>
+            <Cardscity className='cards_flex none column' name={api.name} photo={api.photo} continent={api.continent} population={api.population} text={"Population: "} />
+            {basc}
+          </div>
+        </div>
+      </div>
 
     </>
   )

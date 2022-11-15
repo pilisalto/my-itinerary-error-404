@@ -29,10 +29,9 @@ export default function DetailsCity() {
   let it = apiCo.filter(e => e.hotelId === setHotel)
   let basc = ""
   console.log(it)
-  if(it.length){
+  if(it.length>1){
     basc = <>
     <Shows name={it[0].name} photo={it[0].photo[0]} description={it[0].description} price={it[0].price} />
-    <Shows name={it[1].name} photo={it[1].photo[0]} description={it[1].description} price={it[1].price}/>
     </>
   }
   else{

@@ -11,7 +11,7 @@ body {
 }
 
 .home1 {
-  height: 200vh;
+  min-height: 200vh;
   min-width: 100%;
   display: flex;
   flex-direction: column;
@@ -67,7 +67,7 @@ body {
 
 .container_home1 {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,8 +86,7 @@ body {
 
 .home2 {
   width: 100%;
-  height: 130vh;
-  background-color: #202328;
+  min-height: 130vh;
   display: flex;
   flex-direction: column;
 }
@@ -105,14 +104,12 @@ body {
 
 .nav_bar {
   width: 100%;
-  height: 10vh;
+  min-height: 10vh;
   color: #d9d9d9;
-  box-shadow: 3px 2px 4px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  backdrop-filter: blur(4px);
 }
 
 .none {
@@ -220,6 +217,7 @@ body {
 
 .carousel {
   width: 100%;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,6 +225,7 @@ body {
   text-align: center;
   align-content: center;
 }
+
 
 .row_carousel {
   display: flex;
@@ -251,7 +250,6 @@ body {
   align-content: center;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-color: 3px #922222;
   background-color: #212529;
 }
 
@@ -273,8 +271,8 @@ body {
 }
 
 .card1 {
-  width: 30;
-  height: 40;
+  min-width: 30;
+  min-height: 40;
   border-radius: 7px;
 }
 
@@ -309,8 +307,8 @@ body {
 /*SIGN IN*/
 
 .login-box {
-  width: 320px;
-  height: 420px;
+  min-width: 320px;
+  min-height: 420px;
   background: #202328;
   border-radius: 10px;
   color: #d9d9d9;
@@ -377,7 +375,7 @@ body {
 /*CONTACT US*/
 
 .contact-form {
-  max-width: 800px;
+  min-width: 800px;
   background: #202328;
   border-radius: 10px;
   color: #d9d9d9;
@@ -487,8 +485,8 @@ body {
 
 .cards_flex {
   padding: 75px 20px 75px 20px;
-  width: 100%;
-  height: 60vh;
+  min-width: 100%;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -498,11 +496,12 @@ body {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: white;
   text-decoration: none;
+  gap: 60px;
 }
 
 .contenedor {
   width: 100%;
-  height: 20vh;
+  min-height: 20vh;
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -514,7 +513,7 @@ body {
 .cards_flex2 {
   padding: 75px 20px 75px 20px;
   width: 400px;
-  height: 50vh;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -526,4 +525,5 @@ body {
   background-color: #212529;
   text-decoration: none;
   color: white;
+  gap: 60px;
 }

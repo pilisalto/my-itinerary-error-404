@@ -14,9 +14,9 @@ export default function Footer() {
                     <p className='p'>All rights reserved.</p>
                 </div>
                 <div className='column'>
-                    <a href="./Cardscity.jsx" className='a'>Cities</a>
-                    <a href="./Cardshotels.jsx" className='a'>Hotels</a>
-                    <a href="./AboutUs" className='a'>About Us</a>
+                    <a href="./Cardscity" className='a'>Cities</a>
+                    <a href="./Cardshotels" className='a'>Hotels</a>
+                    <a href="./Contact" className='a'>Contact</a>
                 </div>
                 <div className='column'>
                     <div className='row'>

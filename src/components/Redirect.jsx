@@ -11,6 +11,8 @@ import Hotel from "./Hotel"
 import Contact from './Contact'
 import Shows from './Shows'
 import Itinerary from './Itinerary'
+import NewHotel from './NewHotel'
+import NewCity from './NewCities'
 
 
 
@@ -29,6 +31,8 @@ export default function Redirect() {
             <Route path='/signin'element={<SignIn/>} />
             <Route path='/city/:setIndex'element={<City/>} />
             <Route path='/hotel/:setHotel'element={<Hotel/>} />
+            <Route path="/newhotel" element={<NewHotel/>} />
+            <Route path="/newcities" element={<NewCity/>}/>
       </Routes> 
     </>
   )

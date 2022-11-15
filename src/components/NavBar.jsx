@@ -45,6 +45,9 @@ export default function NavBar() {
                             <div className='flex direction-column column'>
                                 <Link to="/signup" onClick={mostrar} className='none nav_style'>SignUp</Link>
                                 <Link to="/signin" onClick={mostrar} className='none nav_style'>SignIn</Link>
+                                <Link to="/newcities" onClick={mostrar} className='none nav_style'>New City</Link>
+                                <Link to="/newhotel" onClick={mostrar} className='none nav_style'>New Hotel</Link>
+                                
                             </div>
                         
                     )

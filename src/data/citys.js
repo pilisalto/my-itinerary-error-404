@@ -59,7 +59,7 @@ let citys = [
         id:"city8",
         name:"Barcelona",
         continent:"Europe",
-        photo:"https://media.timeout.com/images/105504583/1024/576/image.jpg",
+        photo:"https://as01.epimg.net/diarioas/imagenes/2022/04/30/actualidad/1651323395_313362_1651323476_noticia_normal_recorte1.jpg",
         population:5714730,
         userId:"admin4" 
     },

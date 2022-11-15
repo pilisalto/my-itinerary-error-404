@@ -1,17 +1,19 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../src/api/url'
+import { useEffect} from 'react'
+import axios from 'axios'
 
 export default function FormCities() {
     const navigate = useNavigate();
 
     const [addCity, setAddCity] = useState([{
-        id: '',
-        nombre: '',
-        continente: '',
-        foto: '',
-        poblacion: '',
-        userAdmin: '',
+        "name": '',
+        "continent": '',
+        "photo": '',
+       "population": '',
+        "userId": '',
 
     }])
 
@@ -22,11 +24,21 @@ export default function FormCities() {
             ...addCity,
             [prop]: value
         })
+        console.log(addCity.name)
     }
 
     const ValidateInfo = async () => {
-        localStorage.setItem('city', JSON.stringify(addCity))
-        alert('Ciudad agregada')
+            console.log(addCity)
+            
+                axios.post(`${BASE_URL}/cities`,{name:addCity.name,continent:addCity.continent,photo:addCity.photo,population:Number(addCity.population),userId:addCity.userId})
+                  .then(function (response) {
+                    console.log(response);
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+            
+        
     }
 
     return (
@@ -35,26 +47,25 @@ export default function FormCities() {
                     <h3> Enter the City information</h3>
 
                     <label htmlFor="">
-                        <input name='id'  onChange={readInput} type="text" placeholder='Id'/>
                     </label>
 
                         <label htmlFor=""></label>
-                        <input name='nombre' onChange={readInput} type="text" placeholder="Name"/>
+                        <input name='name' onChange={readInput} type="text" placeholder="Name"/>
 
                         <label htmlFor=""></label>
-                        <input name='continente'  onChange={readInput} type="text" placeholder="Continent"/>
+                        <input name='continent'  onChange={readInput} type="text" placeholder="Continent"/>
 
                         <label htmlFor=""></label>
-                        <input name='foto'  onChange={readInput} type="text" placeholder="Photo"/>
+                        <input name='photo'  onChange={readInput} type="text" placeholder="Photo"/>
 
                         <label htmlFor=""></label>
-                        <input name='poblacion'  onChange={readInput} type="text" placeholder='Population'/>
+                        <input name='population'  onChange={readInput} type="text" placeholder='Population'/>
 
                         <label htmlFor=""></label>
-                        <input name='userAdmin' onChange={readInput} type="text" placeholder='UserAdmin'/>
+                        <input name='userId' onChange={readInput} type="text" placeholder='UserAdmin'/>
 
                 <div>
-                    <button className=' button login' onClick={() => ValidateInfo()}>Add City</button>
+                    <p className=' button login' onClick={() => ValidateInfo()}>Add City</p>
                 </div>
                 </form>
 

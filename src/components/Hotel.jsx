@@ -10,42 +10,39 @@ import axios from 'axios'
 
 
 export default function DetailsCity() {
-  let {setHotel} = useParams()
+  let { setHotel } = useParams()
   let [api, setApi] = useState([])
-  let [apiCo, setApiCo] =useState([])
+  let [apiCo, setApiCo] = useState([])
 
   useEffect(() => {
     axios.get(`${BASE_URL}/api/hotels/${setHotel}`).then((res) => {
-      (setApi(res.data.data))
+      setApi(res.data.data)
     })
       .catch(err => console.log(err))
     axios.get(`${BASE_URL}/api/shows`).then((res) => {
-      (setApiCo(res.data.data))
+      setApiCo(res.data.data)
     })
       .catch(err => console.log(err))
 
   }, [])
-  
+
   let it = apiCo.filter(e => e.hotelId === setHotel)
   let basc = ""
-  console.log(it)
-  if(it.length>1){
-    basc = <>
-    <Shows name={it[0].name} photo={it[0].photo[0]} description={it[0].description} price={it[0].price} />
-    </>
+  if (it.length > 1) {
+    basc = it.map(e => <Shows name={e.name} photo={e.photo[0]} description={e.description} price={e.price} />)
   }
-  else{
+  else {
     basc = "not shows"
   }
   return (
     <>
-    <div className='image_back2'>
-    <NavBar/>
-    <div className='home3 container cards_flex'>
-    <HotelCard name={api.name} photo={api.photo} capacity={api.capacity}/>
-    {basc}
-    </div>
-    </div>
+      <div className='image_back2'>
+        <NavBar />
+        <div className='home3 container cards_flex'>
+          <HotelCard name={api.name} photo={api.photo} capacity={api.capacity} />
+          {basc}
+        </div>
+      </div>
     </>
   )
 }

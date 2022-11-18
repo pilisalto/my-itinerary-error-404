@@ -7,54 +7,49 @@ import { BASE_URL } from '../../src/api/url'
 import axios from 'axios'
 import { useEffect } from 'react'
 
-export default function Cities() {  
+export default function Cities() {
   let [filcheck, setFilcheck] = useState([])
   let [inp, setInp] = useState("")
   let [api, setApi] = useState([])
-  let [effect, setEffect] = useState()
   let [ho, setHo] = useState([])
-  
+
+
   useEffect(() => {
-    setEffect(axios.get(`${BASE_URL}/api/cities`).then((res) => {
-      (setApi(res.data.response))
+    axios.get(`${BASE_URL}/api/cities`).then((res) => {
+      setApi(res.data.response)
     })
-      .catch(err => console.log(err)),
-      axios.get(`${BASE_URL}/api/cities`).then((res) => {
-        (setHo(res.data.response))
-      })
-        .catch(err => console.log(err))
-      )            
-  },[])
-  
+      .catch(err => console.log(err))
+    axios.get(`${BASE_URL}/api/cities`).then((res) => {
+      setHo(res.data.response)
+    })
+      .catch(err => console.log(err))
 
-  
+  }, [])
+
   let checkbox = ([... new Set(ho.map(e => e.continent))].map(s => <form><label>{s}<input type="checkbox" onClick={e => check(e.target.value)} value={s} ></input> </label></form >))
-  
-
 
   function check(e) {
-    if (filcheck.indexOf(e)) {
+    if (filcheck.includes(e)) {
       let i = filcheck.indexOf(e)
-      setFilcheck(filcheck.splice(i,1))
+      filcheck.splice(i, 1)
+      setFilcheck(filcheck)
     }
     else {
-        setFilcheck(filcheck.push(e))
-    }  
-    console.log(filcheck.toString())
-    setEffect(axios.get(`${BASE_URL}/api/cities?name=${inp}&continent=${filcheck.toString()}`).then((response) => {
+      filcheck.push(e)
+      setFilcheck(filcheck)
+    }
+    axios.get(`${BASE_URL}/api/cities?name=${inp}&continent=${filcheck.toString()}`).then((response) => {
       setApi(response.data.response)
     })
-      .catch(err => console.log(err)))   
+      .catch(err => console.log(err))
   }
   function funInput(e) {
     setInp(e)
-    setEffect(axios.get(`${BASE_URL}/api/cities?name=${e}&continent=${filcheck.toString()}`).then((response) => {
+    axios.get(`${BASE_URL}/api/cities?name=${e}&continent=${filcheck.toString()}`).then((response) => {
       setApi(response.data.response)
     })
-      .catch(err => console.log(err)))
+      .catch(err => console.log(err))
   }
-  //console.log(api.response.map((e, b, c) => (<Link to={"/city/" + c[b]._id}><CityCard name={e.name} photo={e.photo} /></Link>)))
-  //<CityCard name={e.name} photo={e.photo} continent={e.continent} population={e.population}/>
   return (
     <>
       <div className='image_back4'>

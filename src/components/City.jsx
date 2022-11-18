@@ -27,15 +27,14 @@ export default function DetailsCity() {
       .catch(err => console.log(err))
 
   }, [])
-  console.log(api)
   let it = apiCo.filter(e => e.cityId === setIndex)
   let basc = ""
 
   if(it.length){
-    basc = <>
-    <Itinirary name={it[0].name} photo={it[0].photo[0]} descripcion={it[0].descripcion} price={it[0].price} />
-    <Itinirary name={it[1].name} photo={it[1].photo[0]} descripcion={it[1].descripcion} price={it[1].price}/>
-    </>
+   
+    basc = it.map(e => <Itinirary name={e.name} photo={e.photo[1]} descripcion={e.descripcion} price={e.price} />)
+    
+   
   }
   else{
     basc = "not itinirary"

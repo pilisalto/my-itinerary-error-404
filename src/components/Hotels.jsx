@@ -16,36 +16,26 @@ export default function Cities() {
   let checkbox = (<form><label>Ascending<input type="radio" name='1' onClick={e => filterCheck(e.target.value)} value="asc" ></input> </label><label>Descending<input type="radio" name='1' onClick={e => filterCheck(e.target.value)} value="desc" ></input> </label></form >)
   useEffect(() => {
     axios.get(`${BASE_URL}/api/hotels/`).then((res) => {
-      (setApi(res.data.response))
+      setApi(res.data.response)
     })
       .catch(err => console.log(err))
-    axios.get(`${BASE_URL}/api/hotels`).then((res) => {
-      (setApiCo(res.data.response))
-    })
-      .catch(err => console.log(err))
-
   }, [])
-  
+
   function filterInp(e) {
     setInp(e)
-    console.log(`${BASE_URL}/api/hotels?name=${inp}&order=${check} `)
-    (axios.get(`${BASE_URL}/api/hotels?name=${e}&order=${check}`).then((response) => {
+    axios.get(`${BASE_URL}/api/hotels?name=${e}&order=${check}`).then((response) => {
       setApi(response.data.response)
     })
-      .catch(err => console.log(err)))
+      .catch(err => console.log(err))
   }
   function filterCheck(e) {
-    console.log(`${BASE_URL}/api/hotels?name=${inp}&order=${e} `)
     setCheck(e)
-   (axios.get(`${BASE_URL}/api/hotels?name=${inp}&order=${e}`).then((response) => {
+    axios.get(`${BASE_URL}/api/hotels?name=${inp}&order=${e}`).then((response) => {
       setApi(response.data.response)
     })
-      .catch(err => console.log(err)))
+      .catch(err => console.log(err))
   }
-  console.log(api)
-
-  //<CityCard name={e.name} photo={e.photo} continent={e.continent} population={e.population}/>
-  return (
+ return (
     <>
       <div className='image_back5'>
         <div><NavBar /></div>

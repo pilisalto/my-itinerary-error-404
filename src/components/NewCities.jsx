@@ -2,9 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import { BASE_URL } from '../../src/api/url'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function FormCities() {
-
+    const navigation = useNavigate()
     const [addCity, setAddCity] = useState({
         "name": '',
         "continent": '',
@@ -23,14 +24,18 @@ export default function FormCities() {
         })
     }
     
-    const ValidateInfo = async () => {
+    const ValidateInfo = async (e) => {
+        e.preventDefault()
       await axios.post(`${BASE_URL}/api/cities`, { name: addCity.name, continent: addCity.continent, photo: addCity.photo, population: Number(addCity.population), userId: addCity.userId })
             .then(function (response){
-                if(response.status === 201 || response.status === 204){
+                console.log(response.data)
+                if(response.data.success){
                     alert("was successfully created")
+                    
+                    navigation("/city/"+response.data.id)
                 }
                 else{
-                    alert("The city was not created")
+                    alert(response.data.message.join("- - - - -"))
                 }
             })
             .catch(function (error) {
@@ -63,7 +68,7 @@ export default function FormCities() {
             <input name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
 
             <div>
-                <p className=' button login' onClick={() => ValidateInfo()}>Add City</p>
+                <button className=' button login' onClick={(e) => ValidateInfo(e)}>Add City</button>
             </div>
         </form>
 

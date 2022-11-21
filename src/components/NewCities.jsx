@@ -63,7 +63,7 @@ export default function FormCities() {
             <input name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
 
             <div>
-                <button className=' button login' onClick={() => ValidateInfo()}>Add City</button>
+                <p className=' button login' onClick={() => ValidateInfo()}>Add City</p>
             </div>
         </form>
 

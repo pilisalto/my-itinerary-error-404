@@ -2,10 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { BASE_URL } from '../../src/api/url'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function FormHotel() {
   let [form, setForm] = useState({});
-
+  const navigation = useNavigate()
 
   let handleChange = (e) => {
 
@@ -16,14 +18,16 @@ export default function FormHotel() {
 
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     await axios.post(`${BASE_URL}/api/hotels`, form)
       .then(function (response) {
-        if (response.status === 201 || response.status > 201) {
+        if (response.data.success) {
           alert("was successfully created")
+          navigation("/hotel/"+response.data.id)
         }
         else {
-          alert("The hotel was not created")
+          alert(response.data.message.join("- - - - -"))
         }
       })
       .catch(function (error) {
@@ -43,7 +47,7 @@ export default function FormHotel() {
         <input name="cityId" type="text" placeholder='City Id' onChange={handleChange} required />
         <input name="userId" type="text" placeholder='Your Id' onChange={handleChange} required />
 
-        <button className=' button login' onClick={handleSubmit}>Add Hotel</button>
+        <button className=' button login' onClick={e => handleSubmit(e)}>Add Hotel</button>
       </form>
     </>
 

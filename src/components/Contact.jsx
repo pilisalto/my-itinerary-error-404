@@ -9,10 +9,7 @@ export default function Contact() {
         <div className='image_back6'>
         <div><NavBar/></div>
         <div className='container'>
-    <h1 class="h1 row">C<span className='resaltado'>o</span>ntact</h1>
-    <div className='home3'>
-    <div className='container_home column'>
-        <div class="contact-form">
+        <div class="contact-form column">
             <h4 className='h1_2 column'>Contact us</h4>
             <form>
                 <p>
@@ -36,12 +33,10 @@ export default function Contact() {
                     <textarea name="message" rows="3"></textarea>
                 </p>
                 <p class="block">
-                <input type="submit" className='boton1 a send' value="Send"/>
+                <input type="submit" className='boton a send' value="Send"/>
                 </p>
             </form>
         </div>
-    </div>
-    </div>
     </div>
     </div>
 </>

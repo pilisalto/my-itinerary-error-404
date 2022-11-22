@@ -20,16 +20,16 @@ export default function Footer() {
                 </div>
                 <div className='column'>
                     <div className='row'>
-                        <img src="/img/icons/youtube.png" alt="youtube" className='icons'/>
-                        <p className='p'>Mi Tinerary</p>
+                        <img src="/img/icons/youtube.png" alt="youtube" className='icons_footer'/>
+                        <p className='p'> Mi Tinerary</p>
                     </div>
                     <div className='row'>
-                        <img src="/img/icons/instagram.png" alt="instagram" className='icons'/>
-                        <p className='p'>@mytinerary</p>
+                        <img src="/img/icons/instagram.png" alt="instagram" className='icons_footer'/>
+                        <p className='p'> @mytinerary</p>
                     </div>
                     <div className='row'>
-                        <img src="/img/icons/facebook.png" alt="facebook" className='icons'/>
-                        <p className='p'>My Tinerary</p>
+                        <img src="/img/icons/facebook.png" alt="facebook" className='icons_footer'/>
+                        <p className='p'> My Tinerary</p>
                     </div>
                 </div>
             </div>

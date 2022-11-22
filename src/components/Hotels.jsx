@@ -33,18 +33,17 @@ export default function Cities() {
  return (
     <>
       <div className='image_back5'>
-        <div><NavBar /></div>
-        <div className='home1'>
+        <div><NavBar/></div>
+        <div className='container'>
           <h1 className='h1 row'>H<span className='resaltado'>o</span>tels</h1>
-          <div className='contenedor'>
+
             <div className='check'>{checkbox}</div>
             <form role="search">
               <input type="search" className='search' onChange={e => filterInp(e.target.value)} placeholder="Search" /> <img src="/img/icons/busqueda.png" alt="" />
             </form>
           </div>
-          <div className='cards_flex'>{hotelsFiltrados.map((e, b, c) => (<Link to={"/hotel/" + c[b]._id}><HotelCard name={e.name} photo={e.photo} capacity={e.capacity} /></Link>))}</div>
+          <div className='container'>{hotelsFiltrados.map((e, b, c) => (<Link to={"/hotel/" + c[b]._id}><HotelCard className='card none row' name={e.name} photo={e.photo} capacity={e.capacity} /></Link>))}</div>
         </div>
-      </div>
 
     </>
   )

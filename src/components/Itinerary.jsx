@@ -5,13 +5,13 @@ export default function activitie(props) {
 let {name, photo, descripcion, price} = props
   return (
     <>
-        <div className='home1'>
-      <div className='home1 container cards_flex column'>
-                <h2 className='h2'>{name}</h2>
-                <img className='image' src={photo} alt={name} />
-                <h4 className='h4'>{descripcion}</h4>
-                <h4 className='h4'>{"Price: "+price+" $"}</h4>
-                <h4 className='h4'>{"Duration : "+price+" hrs"}</h4>
+        <div className='container'>
+      <div className='card'>
+                <h2 className='info-card'>{name}</h2>
+                <img className='img' src={photo} alt={name} />
+                <h4 className='info-card'>{descripcion}</h4>
+                <p className='info-card'>{"Price: "+price+" $"}</p>
+                <p className='info-card'>{"Duration : "+price+" hrs"}</p>
     </div>
     </div>
 

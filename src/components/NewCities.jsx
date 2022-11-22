@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { BASE_URL } from '../../src/api/url'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBar'
+
 
 export default function FormCities() {
     const navigation = useNavigate()
@@ -46,32 +48,38 @@ export default function FormCities() {
 
     return (
 
-
-        <form className='sign-in' action="">
-            <h3> Enter the City information</h3>
+        <div className='image_back2'>
+        <div><NavBar/></div>
+        <div className='container'>
+            <div className='container1'>
+            <h1 className='h1_2'>Enter the City information</h1>
+        <form  action="">
 
             <label htmlFor="">
             </label>
 
-            <label htmlFor=""></label>
-            <input name='name' onChange={readInput} type="text" placeholder="Name" />
+            <label className='.titulo' htmlFor="">Name</label>
+            <input className='input' name='name' onChange={readInput} type="text" placeholder="Name" />
 
-            <label htmlFor=""></label>
-            <input name='continent' onChange={readInput} type="text" placeholder="Continent" />
+            <label className='.titulo' htmlFor="">Continent</label>
+            <input className='input' name='continent' onChange={readInput} type="text" placeholder="Continent" />
 
-            <label htmlFor=""></label>
-            <input name='photo' onChange={readInput} type="text" placeholder="Photo" />
+            <label className='.titulo' htmlFor="">Photo</label>
+            <input className='input' name='photo' onChange={readInput} type="text" placeholder="Photo" />
 
-            <label htmlFor=""></label>
-            <input name='population' onChange={readInput} type="text" placeholder='Population' />
+            <label className='.titulo' htmlFor="">Population</label>
+            <input className='input' name='population' onChange={readInput} type="text" placeholder='Population' />
 
-            <label htmlFor=""></label>
-            <input name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
+            <label className='.titulo' htmlFor="">UserAdmin</label>
+            <input className='input' name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
 
             <div>
-                <p className='boton' onClick={() => ValidateInfo()}>Add City</p>
+                <p className='boton a send1' onClick={() => ValidateInfo()}>Add City</p>
             </div>
         </form>
+        </div>
+        </div>
+        </div>
 
     )
 }

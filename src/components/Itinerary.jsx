@@ -1,6 +1,8 @@
 import React from 'react'
 
 
+
+
 export default function activitie(props) {
 let {name, photo, descripcion, price} = props
   return (

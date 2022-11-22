@@ -67,21 +67,31 @@ export default function MyTineraries() {
         <>
             <div><NavBar /></div>
             <div>
-                <form className='sign-in'   >
-
-                    <h3>Enter the Hotel information</h3>
+            <div className='container'>
+            <div className='container1'>
+            <h1 className='h1_2'>Enter the Itinerary information</h1>
+                <form>
+                    <label className='.titulo' htmlFor="">Id</label>
                     <input name="_id" type="text" placeholder='_id' onChange={readInput} required />
+                    <label className='.titulo' htmlFor="">City Id</label>
                     <input name="cityId" type="text" placeholder='City Id' onChange={readInput} required />
+                    <label className='.titulo' htmlFor="">Name</label>
                     <input name="name" type="text" placeholder='Tinerary´s Name' onChange={readInput} required />
+                    <label className='.titulo' htmlFor="">Photo</label>
                     <input name="photo" type="text" placeholder='Photo' onChange={readInput} required />
+                    <label className='.titulo' htmlFor="">Descripcion</label>
                     <input name="descripcion" type="text" placeholder='descripcion' onChange={readInput} required />
+                    <label className='.titulo' htmlFor="">Duration</label>
                     <input name="duration" type="text" placeholder='duration' onChange={readInput} required />
+                    <label className='.titulo' htmlFor="">Your Id</label>
                     <input name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
 
-                    <button className=' button login' onClick={e => ValidateInfo(e)}>Edit Hotel</button>
+                    <button className=' buoton a send1' onClick={e => ValidateInfo(e)}>Edit Hotel</button>
                 </form>
             </div>
             <div> {filtrarTineraries.map((e) => (<> <Itinerary name={e.name} photo={e.photo[0]} descripcion={e.descripcion} price={e.price} /> <button name={e._id} onClick={e => deleteTineraries(e.target.name)}>Delete</button></>))} </div>
+            </div>
+            </div>
         </>
     )
 }

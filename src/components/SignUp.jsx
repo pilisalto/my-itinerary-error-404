@@ -38,10 +38,10 @@ export default function SignUp() {
     return (
         <>
         <div className='image_back2'>
-        <div className='home3'>
             <div><NavBar/></div>
-                <h1 className='h1 row'>Registrati<span className='resaltado'>on</span></h1>
+            <div className='container'>
                 <div className='container1'>
+                <h1 className='h1_2'>Login Here</h1>
                     <form>
                         <div>
                             <div>
@@ -66,7 +66,7 @@ export default function SignUp() {
                             </div>
                         </div>
                         <div>
-                            <input onClick={a =>confEmail(a)} type="submit" className='boton1 a send1' value="Register" />
+                            <input onClick={a =>confEmail(a)} type="submit" className='boton a send1' value="Register" />
                         </div>
                         </form>
                 <Link to={"/signin"} className='none a'>Do you have An account?</Link>

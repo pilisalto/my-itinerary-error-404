@@ -38,8 +38,8 @@ export default function DetailsCity() {
     <>
       <div className='image_back2'>
         <NavBar />
-        <div className='home3 container cards_flex'>
-          <HotelCard name={api.name} photo={api.photo} capacity={api.capacity} />
+        <div className='card'>
+          <HotelCard className='none' name={api.name} photo={api.photo} capacity={api.capacity} />
           {basc}
         </div>
       </div>

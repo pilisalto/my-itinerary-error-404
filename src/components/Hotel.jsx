@@ -29,7 +29,7 @@ export default function DetailsCity() {
   let it = apiCo.filter(e => e.hotelId === setHotel)
   let basc = ""
   if (it.length > 1) {
-    basc = it.map(e => <Shows name={e.name} photo={e.photo[0]} description={e.description} price={e.price} />)
+    basc = it.map(e => <Shows name={e.name} photo={e.photo} description={e.description} price={e.price} />)
   }
   else {
     basc = "not shows"

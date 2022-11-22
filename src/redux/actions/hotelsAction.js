@@ -1,4 +1,4 @@
-import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import {  createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL } from "../../api/url";
 import axios from "axios";
 

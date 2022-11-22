@@ -472,15 +472,11 @@ body {
 }
 
 .container1 {
-  max-width: 800px;
-  min-height: 500px;
+  max-width: 500px;
+  min-height: 400px;
   background: #202328;
   border-radius: 10px;
   color: #d9d9d9;
-  left: 50%;
-  top: 60%;
-  position: absolute;
-  transform: translate(-50%, -50%);
   box-sizing: border-box;
   padding: 30px 30px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -522,3 +518,4 @@ body {
     padding: 10px 10px 10px 10px;
     row-gap: 10px;
 } 
+

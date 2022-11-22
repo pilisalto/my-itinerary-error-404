@@ -15,7 +15,7 @@ import NewHotel from './NewHotel'
 import NewCity from './NewCities'
 import MyCities from './MyCities'
 import MyHotels from './MyHotels'
-
+import MyTineraries from './MyTineraries'
 
 export default function Redirect() {
   return (
@@ -36,6 +36,7 @@ export default function Redirect() {
             <Route path="/newcities" element={<NewCity/>}/>
             <Route path="/mycities" element={<MyCities/>}/>
             <Route path="/myhotels" element={<MyHotels/>}/>
+            <Route path="/mytineraries" element={<MyTineraries/>}/>
       </Routes> 
     </>
   )

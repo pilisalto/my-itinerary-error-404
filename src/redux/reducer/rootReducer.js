@@ -3,12 +3,14 @@ import citiesReducer from "./citiesReducer";
 import hotelsReducer from "./hotelsReducer";
 import myCitiesReducer from "./myCitiesReducer";
 import myHotelsReducer from "./myHotelsReducer";
+import myTinerariesReducer from "./myTinerariesReducer";
 
 const rootReducer = {
     citiesReducer,
     hotelsReducer,
     myCitiesReducer,
-    myHotelsReducer
+    myHotelsReducer,
+    myTinerariesReducer
 }
 
 export default rootReducer;

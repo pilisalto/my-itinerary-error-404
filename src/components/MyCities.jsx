@@ -66,36 +66,39 @@ export default function MyCities() {
         <>
             <div><NavBar /></div>
             <div>
-                <form className='sign-in' action="">
-                    <h3> Enter the City information</h3>
-
+            <div className='container'>
+            <div className='container1'>
+            <h1 className='h1_2'>Enter the City information</h1>
+                <form action="">
                     <label htmlFor="">
                     </label>
 
-                    <label htmlFor=""></label>
-                    <input name='_id' onChange={readInput} type="text" placeholder="_id" />
+                    <label className='.titulo' htmlFor="">Id</label>
+                    <input className='input' name='_id' onChange={readInput} type="text" placeholder="_id" />
 
-                    <label htmlFor=""></label>
-                    <input name='name' onChange={readInput} type="text" placeholder="Name" />
+                    <label className='.titulo' htmlFor="">Name</label>
+                    <input className='input' name='name' onChange={readInput} type="text" placeholder="Name" />
 
-                    <label htmlFor=""></label>
-                    <input name='continent' onChange={readInput} type="text" placeholder="Continent" />
+                    <label className='.titulo' htmlFor="">Continent</label>
+                    <input className='input' name='continent' onChange={readInput} type="text" placeholder="Continent" />
 
-                    <label htmlFor=""></label>
-                    <input name='photo' onChange={readInput} type="text" placeholder="Photo" />
+                    <label className='.titulo' htmlFor="">Photo</label>
+                    <input className='input' name='photo' onChange={readInput} type="text" placeholder="Photo" />
 
-                    <label htmlFor=""></label>
-                    <input name='population' onChange={readInput} type="text" placeholder='Population' />
+                    <label className='.titulo' htmlFor="">Population</label>
+                    <input className='input' name='population' onChange={readInput} type="text" placeholder='Population' />
 
-                    <label htmlFor=""></label>
-                    <input name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
+                    <label className='.titulo' htmlFor="">User Id</label>
+                    <input className='input' name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
 
                     <div>
-                        <button className=' button login' onClick={(e) => ValidateInfo(e)}>Edit City</button>
+                        <button className='boton a send1' onClick={(e) => ValidateInfo(e)}>Edit City</button>
                     </div>
                 </form>
             </div>
             <div> {filtrarCities.map((e, b, c) => (<>  <Link to={"/city/" + c[b]._id}><CityCard name={e.name} photo={e.photo} /></Link> <button name={e._id} onClick={e => deleteCity(e.target.name)}>Delete</button></>))} </div>
+            </div>
+            </div>
         </>
     )
 }

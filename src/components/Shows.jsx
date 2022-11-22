@@ -5,9 +5,9 @@ export default function show(props) {
     let {name, photo, description, price, date} = props
     return (
         <>
-            <div className='container'>
-            <div className='image_back6'>
-            <div><NavBar/></div>
+    <div className='image_back6'>
+        <div><NavBar/></div>
+        <div className='container'>
                 <div className='card'>
                 <h2 className='info-card'>{name}</h2>
                 <img className='img' src={photo} alt={name} />

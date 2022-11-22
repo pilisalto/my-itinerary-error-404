@@ -54,12 +54,14 @@ export default function Cities() {
         <div className='container'>
           <h1 class="h1 row">Ci<span className='resaltado'>t</span>ies</h1>
           <div className='container'>
-            <div className='check'>{checkbox}</div>
+            <div className='column'>
+            <div className='check column'>{checkbox}</div>
             <form role="search">
               <input type="search" className='search' onChange={e => funInput(e.target.value)} placeholder="Search" /> <img src="/img/icons/busqueda.png" alt="" />
             </form>
+            </div>
           </div>
-          <div className='card none'>{citiesFiltrados.map((e, b, c) => (<Link to={"/city/" + c[b]._id}><CityCard name={e.name} photo={e.photo} /></Link>))}</div>
+          <div>{citiesFiltrados.map((e, b, c) => (<Link className='none' to={"/city/" + c[b]._id}><CityCard className='none' name={e.name} photo={e.photo} /></Link>))}</div>
         </div>
       </div>
     </>

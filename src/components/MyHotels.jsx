@@ -65,20 +65,30 @@ export default function MyHotels() {
         <>
             <div><NavBar /></div>
             <div>
-            <form className='sign-in'   >
+            <div className='container'>
+            <div className='container1'>
+            <h1 className='h1_2'>Enter the Hotel information</h1>
+            <form>
+<label className='.titulo' htmlFor="">Id</label>                
+<input className='input' name="_id" type="text" placeholder='_id' onChange={readInput} required />
+<label className='.titulo' htmlFor="">Hotel's Name</label>
+<input className='input' name="name" type="text" placeholder='Hotel´s Name' onChange={readInput} required />
+<label className='.titulo' htmlFor="">Photo</label>
+<input className='input' name="photo" type="text" placeholder='Photo' onChange={readInput} required />
+<label className='.titulo' htmlFor="">Capacity</label>
+<input className='input' name="capacity" type="number" placeholder='Capacity' onChange={readInput} required />
+<label className='.titulo' htmlFor="">City Id</label>
+<input className='input' name="cityId" type="text" placeholder='City Id' onChange={readInput} required />
+<label className='.titulo' htmlFor="">Your Id</label>
+<input className='input' name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
 
-<h3>Enter the Hotel information</h3>
-<input name="_id" type="text" placeholder='_id' onChange={readInput} required />
-<input name="name" type="text" placeholder='Hotel´s Name' onChange={readInput} required />
-<input name="photo" type="text" placeholder='Photo' onChange={readInput} required />
-<input name="capacity" type="number" placeholder='Capacity' onChange={readInput} required />
-<input name="cityId" type="text" placeholder='City Id' onChange={readInput} required />
-<input name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
-
-<button className=' button login' onClick={e =>ValidateInfo(e)}>Edit Hotel</button>
+<button className='boton a send1' onClick={e =>ValidateInfo(e)}>Edit Hotel</button>
 </form>
             </div>
             <div> {filtrarCities.map((e, b, c) => (<> <Link to={"/hotel/" + c[b]._id}><HotelCard name={e.name} photo={e.photo} capacity={e.capacity} /></Link> <button name={e._id} onClick={e => deleteHotels(e.target.name)}>Delete</button></>))} </div>
+            </div>
+            </div>
         </>
+
     )
 }

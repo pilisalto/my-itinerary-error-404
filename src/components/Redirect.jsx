@@ -18,6 +18,8 @@ import MyHotels from './MyHotels'
 import MyTineraries from './MyTineraries'
 import MyShows from './MyShows'
 
+
+
 export default function Redirect() {
   return (
     <>

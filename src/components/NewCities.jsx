@@ -5,9 +5,9 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import NavBar from './NavBar'
 
-
 export default function FormCities() {
     const navigation = useNavigate()
+    const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
         "name": '',
         "continent": '',
@@ -32,17 +32,33 @@ export default function FormCities() {
             .then(function (response){
                 console.log(response.data)
                 if(response.data.success){
-                    alert("was successfully created")
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'was successfully created',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     
                     navigation("/city/"+response.data.id)
                 }
                 else{
-                    alert(response.data.message.join("- - - - -"))
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message.join("- - - - -"),
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
                 }
             })
             .catch(function (error) {
                 console.log(error);
-                alert("The city was not created")
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
             })
     }
 
@@ -74,7 +90,7 @@ export default function FormCities() {
             <input className='input' name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
 
             <div>
-                <p className='boton a send1' onClick={() => ValidateInfo()}>Add City</p>
+                <button className='boton a send1' onClick={(e) => ValidateInfo(e)}>Add City</button>
             </div>
         </form>
         </div>

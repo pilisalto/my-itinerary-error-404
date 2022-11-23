@@ -12,6 +12,7 @@ import Itinerary from "./Itinerary"
 export default function MyTineraries() {
     const filtrarTineraries = useSelector(store => store.myTinerariesReducer.tinerariesFiltrados)
     const dispatch = useDispatch()
+    const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
         "_id": "",
         "cityId": "",
@@ -39,7 +40,13 @@ export default function MyTineraries() {
     async function deleteTineraries(e) {
         console.log(e)
         dispatch(myTinerariesAction.eliminarTineraries(e))
-        alert("Tinerary Delete")
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Tinerary Delete',
+            showConfirmButton: false,
+            timer: 1500
+          })
         window.location.reload()
     }
 
@@ -49,17 +56,34 @@ export default function MyTineraries() {
             .then(function (response) {
                 console.log(response.data)
                 if (response.data.success) {
-                    alert("Tinerary Edit")
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Tinerary Edit',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     window.location.reload()
 
                 }
                 else {
-                    alert(response.data.message.join("- - - - -"))
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message.join("- - - - -"),
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
                 }
             })
             .catch(function (error) {
                 console.log(error);
-                alert("The Tinerary was not edit")
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'The Tinerary was not edit',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
 
     }

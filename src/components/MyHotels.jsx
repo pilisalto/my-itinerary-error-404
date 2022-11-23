@@ -12,6 +12,7 @@ import { BASE_URL } from '../api/url'
 export default function MyHotels() {
     const filtrarCities = useSelector(store => store.myHotelsReducer.hotelsFiltrados)
     const dispatch = useDispatch()
+    const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
         "_id": "",
         "name": "",
@@ -37,7 +38,13 @@ export default function MyHotels() {
     async function deleteHotels(e) {
         console.log(e)
         dispatch(myHotelsAction.eliminarHotels(e))
-        alert("Hotel Delete")
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Hotel Delete',
+            showConfirmButton: false,
+            timer: 1500
+          })
         window.location.reload()
     }
 
@@ -47,17 +54,33 @@ export default function MyHotels() {
             .then(function (response){
                 console.log(response.data)
                 if(response.data.success){
-                    alert("Hotel Edit")
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Hotel Edit',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     window.location.reload()                  
 
                 }
                 else{
-                    alert(response.data.message.join("- - - - -"))
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message.join("- - - - -"),
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
                 }
             })
             .catch(function (error) {
                 console.log(error);
-                alert("The hotel was not edit")
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'The hotel was not edit',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
             })
         
     }

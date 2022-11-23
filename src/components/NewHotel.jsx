@@ -9,6 +9,7 @@ import NavBar from './NavBar'
 export default function FormHotel() {
   let [form, setForm] = useState({});
   const navigation = useNavigate()
+  const Swal = require('sweetalert2')
 
   let handleChange = (e) => {
 
@@ -24,16 +25,32 @@ export default function FormHotel() {
     await axios.post(`${BASE_URL}/api/hotels`, form)
       .then(function (response) {
         if (response.data.success) {
-          alert("was successfully created")
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'was successfully created',
+            showConfirmButton: false,
+            timer: 1500
+          })
           navigation("/hotel/"+response.data.id)
         }
         else {
-          alert(response.data.message.join("- - - - -"))
+          Swal.fire({
+            title: 'Error!',
+            text: response.data.message.join("- - - - -"),
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
         }
       })
       .catch(function (error) {
         console.log(error);
-        alert("The hotel was not created")
+        Swal.fire({
+          title: 'Error!',
+          text: 'Do you want to continue',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
       })
   }
   return (

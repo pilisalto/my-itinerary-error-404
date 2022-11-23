@@ -12,6 +12,7 @@ import Shows from './Shows'
 export default function MyShows() {
     const filtrarShows = useSelector(store => store.myShowsReducer.showsFiltrados)
     const dispatch = useDispatch()
+    const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
         "_id": "",
         "hotelId": "",
@@ -39,7 +40,13 @@ export default function MyShows() {
     async function deleteShows(e) {
         console.log(e)
         dispatch(myShowsAction.eliminarShows(e))
-        alert("Show Delete")
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Show Delete',
+            showConfirmButton: false,
+            timer: 1500
+          })
         window.location.reload()
     }
 
@@ -49,17 +56,34 @@ export default function MyShows() {
             .then(function (response) {
                 console.log(response.data)
                 if (response.data.success) {
-                    alert("Show Edit")
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Show Edit',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     window.location.reload()
 
                 }
                 else {
-                    alert(response.data.message.join("- - - - -"))
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message.join("- - - - -"),
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
                 }
             })
             .catch(function (error) {
                 console.log(error);
-                alert("The Shows was not edit")
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'The Shows was not edit',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             })
 
     }

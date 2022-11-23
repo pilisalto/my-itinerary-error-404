@@ -12,6 +12,7 @@ import { BASE_URL } from '../api/url'
 export default function MyCities() {
     const filtrarCities = useSelector(store => store.myCitiesReducer.citiesFiltrados)
     const dispatch = useDispatch()
+    const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
         "_id": "",
         "name": '',
@@ -36,10 +37,16 @@ export default function MyCities() {
     }, []);
     console.log(filtrarCities)
     async function deleteCity(e) {
-        console.log(e)
         dispatch(myCitiesAction.eliminarCities(e))
-        alert("City Delete")
-        window.location.reload()
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'City Delete"',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          window.location.reload()       
+
     }
 
     async function ValidateInfo(e) {
@@ -48,17 +55,33 @@ export default function MyCities() {
             .then(function (response){
                 console.log(response.data)
                 if(response.data.success){
-                    alert("City Edit")
-                    window.location.reload()                  
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'City Edit',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                      window.location.reload()       
 
                 }
                 else{
-                    alert(response.data.message.join("- - - - -"))
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message.join("- - - - -"),
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
                 }
             })
             .catch(function (error) {
-                console.log(error);
-                alert("The city was not edit")
+                console.log(error.message);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'The city was not edit',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
             })
         
     }

@@ -17,7 +17,12 @@ const myTinerariesReducer = createReducer(initialState, (builder)=>{
         return {...state, loading: false, tinerariesFiltrados:[]}
     })
     builder.addCase(myTinerariesAction.eliminarTineraries.fulfilled, (state, action)=>{
-        return {...state, loading: false}
+        const deleteId = action.meta.arg
+        let newState = {
+            ...state,
+            tinerariesFiltrados: state.tinerariesFiltrados.filter(e => e._id != deleteId)
+        }
+        return newState
     })
 } )
 

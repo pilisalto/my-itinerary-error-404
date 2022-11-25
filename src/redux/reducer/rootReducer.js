@@ -5,6 +5,7 @@ import myCitiesReducer from "./myCitiesReducer";
 import myHotelsReducer from "./myHotelsReducer";
 import myTinerariesReducer from "./myTinerariesReducer";
 import myShowsReducer from "./myShowsReducer";
+import usersReducer from "./usersReducer";
 
 const rootReducer = {
     citiesReducer,
@@ -12,7 +13,8 @@ const rootReducer = {
     myCitiesReducer,
     myHotelsReducer,
     myTinerariesReducer,
-    myShowsReducer
+    myShowsReducer,
+    usersReducer
 }
 
 export default rootReducer;

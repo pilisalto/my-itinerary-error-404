@@ -21,7 +21,7 @@ export default function MyTineraries() {
         "descripcion": "",
         "duration": "",
         "userId": ""
-       
+
     })
 
     const readInput = (e) => {
@@ -36,7 +36,7 @@ export default function MyTineraries() {
     useEffect(() => {
         dispatch(myTinerariesAction.filtrarTineraries("636e63981471b35a5c064d4e"));
     }, []);
-   
+
     async function deleteTineraries(e) {
         console.log(e)
         dispatch(myTinerariesAction.eliminarTineraries(e))
@@ -46,15 +46,13 @@ export default function MyTineraries() {
             title: 'Tinerary Delete',
             showConfirmButton: false,
             timer: 1500
-          })
-        window.location.reload()
+        })
     }
 
     async function ValidateInfo(e) {
         e.preventDefault()
         await axios.put(`${BASE_URL}/api/itineraries/${addCity._id} `, addCity)
             .then(function (response) {
-                console.log(response.data)
                 if (response.data.success) {
                     Swal.fire({
                         position: 'top-end',
@@ -62,7 +60,7 @@ export default function MyTineraries() {
                         title: 'Tinerary Edit',
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                    })
                     window.location.reload()
 
                 }
@@ -72,18 +70,17 @@ export default function MyTineraries() {
                         text: response.data.message.join("- - - - -"),
                         icon: 'error',
                         confirmButtonText: 'Cool'
-                      })
+                    })
                 }
             })
             .catch(function (error) {
                 console.log(error);
                 Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'The Tinerary was not edit',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+                    title: 'Error!',
+                    text: 'The Tinerary was not edit',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
             })
 
     }
@@ -91,30 +88,29 @@ export default function MyTineraries() {
         <>
             <div><NavBar /></div>
             <div>
-            <div className='container'>
-            <div className='container1'>
-            <h1 className='h1_2'>Enter the Itinerary information</h1>
-                <form>
-                    <label className='.titulo' htmlFor="">Id</label>
-                    <input name="_id" type="text" placeholder='_id' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">City Id</label>
-                    <input name="cityId" type="text" placeholder='City Id' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Name</label>
-                    <input name="name" type="text" placeholder='Tinerary´s Name' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Photo</label>
-                    <input name="photo" type="text" placeholder='Photo' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Descripcion</label>
-                    <input name="descripcion" type="text" placeholder='descripcion' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Duration</label>
-                    <input name="duration" type="text" placeholder='duration' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Your Id</label>
-                    <input name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
-
-                    <button className=' buoton a send1' onClick={e => ValidateInfo(e)}>Edit Hotel</button>
-                </form>
-            </div>
-            <div> {filtrarTineraries.map((e) => (<> <Itinerary name={e.name} photo={e.photo[0]} descripcion={e.descripcion} price={e.price} /> <button name={e._id} onClick={e => deleteTineraries(e.target.name)}>Delete</button></>))} </div>
-            </div>
+                <div className='container'>
+                    <div className='container1'>
+                        <h1 className='h1_2'>Enter the Itinerary information</h1>
+                        <form>
+                            <label className='.titulo' htmlFor="">Id</label>
+                            <input name="_id" type="text" placeholder='_id' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">City Id</label>
+                            <input name="cityId" type="text" placeholder='City Id' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Name</label>
+                            <input name="name" type="text" placeholder='Tinerary´s Name' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Photo</label>
+                            <input name="photo" type="text" placeholder='Photo' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Descripcion</label>
+                            <input name="descripcion" type="text" placeholder='descripcion' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Duration</label>
+                            <input name="duration" type="text" placeholder='duration' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Your Id</label>
+                            <input name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
+                            <button className=' buoton a send1' onClick={e => ValidateInfo(e)}>Edit Hotel</button>
+                        </form>
+                    </div>
+                    <div> {filtrarTineraries.map((e) => (<> <Itinerary name={e.name} photo={e.photo[0]} descripcion={e.descripcion} price={e.price} /> <button name={e._id} onClick={e => deleteTineraries(e.target.name)}>Delete</button></>))} </div>
+                </div>
             </div>
         </>
     )

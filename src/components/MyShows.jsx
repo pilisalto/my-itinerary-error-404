@@ -46,8 +46,7 @@ export default function MyShows() {
             title: 'Show Delete',
             showConfirmButton: false,
             timer: 1500
-          })
-        window.location.reload()
+        })
     }
 
     async function ValidateInfo(e) {
@@ -62,7 +61,7 @@ export default function MyShows() {
                         title: 'Show Edit',
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                    })
                     window.location.reload()
 
                 }
@@ -72,18 +71,17 @@ export default function MyShows() {
                         text: response.data.message.join("- - - - -"),
                         icon: 'error',
                         confirmButtonText: 'Cool'
-                      })
+                    })
                 }
             })
             .catch(function (error) {
                 console.log(error);
                 Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'The Shows was not edit',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+                    title: 'Error!',
+                    text: 'The Shows was not edit',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
             })
 
     }
@@ -91,32 +89,32 @@ export default function MyShows() {
         <>
             <div><NavBar /></div>
             <div>
-            <div className='container'>
-            <div className='container1'>
-            <h1 className='h1_2'>nter the Show information</h1>
-                <form>
-                    <label className='.titulo' htmlFor="">Id</label>  
-                    <input className='input' name="_id" type="text" placeholder='_id' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Hotel Id</label>  
-                    <input className='input' name="hotelId" type="text" placeholder='Hotel Id' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Name</label>  
-                    <input className='input' name="name" type="text" placeholder='Show´s Name' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Description</label>  
-                    <input className='input' name="descripcion" type="text" placeholder='descripcion' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Photo</label>  
-                    <input className='input' name="photo" type="text" placeholder='Photo' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Price</label>  
-                    <input className='input' name="price" type="number" placeholder='Price' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Date</label>  
-                    <input className='input' name="date" type="number" placeholder='date' onChange={readInput} required />
-                    <label className='.titulo' htmlFor="">Your Id</label>  
-                    <input className='input' name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
+                <div className='container'>
+                    <div className='container1'>
+                        <h1 className='h1_2'>nter the Show information</h1>
+                        <form>
+                            <label className='.titulo' htmlFor="">Id</label>
+                            <input className='input' name="_id" type="text" placeholder='_id' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Hotel Id</label>
+                            <input className='input' name="hotelId" type="text" placeholder='Hotel Id' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Name</label>
+                            <input className='input' name="name" type="text" placeholder='Show´s Name' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Description</label>
+                            <input className='input' name="descripcion" type="text" placeholder='descripcion' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Photo</label>
+                            <input className='input' name="photo" type="text" placeholder='Photo' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Price</label>
+                            <input className='input' name="price" type="number" placeholder='Price' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Date</label>
+                            <input className='input' name="date" type="number" placeholder='date' onChange={readInput} required />
+                            <label className='.titulo' htmlFor="">Your Id</label>
+                            <input className='input' name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
 
-                    <button className='boton a send1' onClick={e => ValidateInfo(e)}>Edit Show</button>
-                </form>
-            </div>
-            <div> {filtrarShows.map((e) => (<> <Shows Shows name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>
-            </div>
+                            <button className='boton a send1' onClick={e => ValidateInfo(e)}>Edit Show</button>
+                        </form>
+                    </div>
+                    <div> {filtrarShows.map((e) => (<> <Shows Shows name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>
+                </div>
             </div>
         </>
     )

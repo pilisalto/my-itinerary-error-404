@@ -45,7 +45,6 @@ export default function MyHotels() {
             showConfirmButton: false,
             timer: 1500
           })
-        window.location.reload()
     }
 
     async function ValidateInfo(e) {

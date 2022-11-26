@@ -29,7 +29,7 @@ export default function DetailsCity() {
   let it = apiCo.filter(e => e.hotelId === setHotel)
   let basc = ""
   if (it.length > 1) {
-    basc = it.map(e => <Shows name={e.name} photo={e.photo[0]} description={e.description} price={e.price} />)
+    basc = it.map(e => <Shows name={e.name} photo={e.photo} description={e.description} price={e.price} />)
   }
   else {
     basc = "not shows"
@@ -38,11 +38,11 @@ export default function DetailsCity() {
     <>
       <div className='image_back2'>
         <NavBar />
-        <div className='home3 container cards_flex'>
-          <HotelCard name={api.name} photo={api.photo} capacity={api.capacity} />
+        <div className='container'>
+          <HotelCard className='none card' name={api.name} photo={api.photo} capacity={api.capacity} />
           {basc}
+          </div>
         </div>
-      </div>
     </>
   )
 }

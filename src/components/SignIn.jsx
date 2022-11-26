@@ -32,8 +32,8 @@ export default function SignIn() {
     return (
         <>
         <div className='image_back3'>
-        <div className='home3'>
         <div><NavBar/></div>
+        <div className='container'>
         <h1 className='h1 row'>Sign<span className='resaltado'>In</span></h1>
             <div class="login-box">
                 <img src="img/imagenes/fondo1.png" class="avatar" alt="AvatarImage"/>
@@ -44,7 +44,7 @@ export default function SignIn() {
                     <label className='label'>Password</label>
                     <input className='input' onChange={a => pwd(a.target.value)} type="password" placeholder="Enter Password"  required/>
                     
-                        <input onClick={e =>val(e)} className='boton1 a' type="submit" value="Log In" />
+                        <input onClick={e =>val(e)} className='boton a' type="submit" value="Log In" />
                     <Link to={"/signup"} className='none a' >Don't have An account?</Link>
                     <div>
                     <ButtonGoogle/>

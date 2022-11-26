@@ -5,10 +5,10 @@ export default function HotelCard(props) {
     return (
         <>
         <div>
-            <div className='cards_flex2'>
-                <h2 className='h2 none'>{name}</h2>
-                <img className='image' src={photo} alt={name} />
-                <h3 className='h3 none'>Capacidad: {capacity}</h3>
+            <div className='card'>
+                <h2 className='info-card none'>{name}</h2>
+                <img className='img' src={photo} alt={name} />
+                <h3 className='info-card none'>Capacidad: {capacity}</h3>
             </div>
         </div>
         </>

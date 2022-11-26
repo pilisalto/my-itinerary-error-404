@@ -2,9 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { BASE_URL } from '../../src/api/url'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBar'
 
 export default function FormCities() {
-
+    const navigation = useNavigate()
+    const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
         "name": '',
         "continent": '',
@@ -23,49 +26,76 @@ export default function FormCities() {
         })
     }
     
-    const ValidateInfo = async () => {
+    const ValidateInfo = async (e) => {
+        e.preventDefault()
       await axios.post(`${BASE_URL}/api/cities`, { name: addCity.name, continent: addCity.continent, photo: addCity.photo, population: Number(addCity.population), userId: addCity.userId })
             .then(function (response){
-                if(response.status === 201 || response.status === 204){
-                    alert("was successfully created")
+                console.log(response.data)
+                if(response.data.success){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'was successfully created',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                    
+                    navigation("/city/"+response.data.id)
                 }
                 else{
-                    alert("The city was not created")
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message.join("- - - - -"),
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
                 }
             })
             .catch(function (error) {
                 console.log(error);
-                alert("The city was not created")
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
             })
     }
 
     return (
 
-        <form className='sign-in' action="">
-            <h3> Enter the City information</h3>
+        <div className='image_back2'>
+        <div><NavBar/></div>
+        <div className='container'>
+            <div className='container1'>
+            <h1 className='h1_2'>Enter the City information</h1>
+        <form  action="">
 
             <label htmlFor="">
             </label>
 
-            <label htmlFor=""></label>
-            <input name='name' onChange={readInput} type="text" placeholder="Name" />
+            <label className='.titulo' htmlFor="">Name</label>
+            <input className='input' name='name' onChange={readInput} type="text" placeholder="Name" />
 
-            <label htmlFor=""></label>
-            <input name='continent' onChange={readInput} type="text" placeholder="Continent" />
+            <label className='.titulo' htmlFor="">Continent</label>
+            <input className='input' name='continent' onChange={readInput} type="text" placeholder="Continent" />
 
-            <label htmlFor=""></label>
-            <input name='photo' onChange={readInput} type="text" placeholder="Photo" />
+            <label className='.titulo' htmlFor="">Photo</label>
+            <input className='input' name='photo' onChange={readInput} type="text" placeholder="Photo" />
 
-            <label htmlFor=""></label>
-            <input name='population' onChange={readInput} type="text" placeholder='Population' />
+            <label className='.titulo' htmlFor="">Population</label>
+            <input className='input' name='population' onChange={readInput} type="text" placeholder='Population' />
 
-            <label htmlFor=""></label>
-            <input name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
+            <label className='.titulo' htmlFor="">UserAdmin</label>
+            <input className='input' name='userId' onChange={readInput} type="text" placeholder='UserAdmin' />
 
             <div>
-                <button className=' button login' onClick={() => ValidateInfo()}>Add City</button>
+                <button className='boton a send1' onClick={(e) => ValidateInfo(e)}>Add City</button>
             </div>
         </form>
+        </div>
+        </div>
+        </div>
 
     )
 }

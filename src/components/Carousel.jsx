@@ -40,23 +40,23 @@ export default function Carousel() {
     return (
 <>
 <div className='carousel'>
-    <div className='lflex direction-row space-around gap-5 wrap row_carousel'>
-        <Link className='none padding' to={"/city/" + citys[index].id}/>
-            <CardsCity className='padding' name={citys[index].name} photo={citys[index].photo} continent={citys[index].continent} />
-        <Link className='none padding'to={"/city/" + citys[index+1].id}>
-            <CardsCity className='padding' name={citys[index + 1].name} photo={citys[index + 1].photo} continent={citys[index + 1].continent} />
+    <div className='row_carousel'>
+        <Link className='none' to={"/city/" + citys[index].id}/>
+            <CardsCity className='card img' name={citys[index].name} photo={citys[index].photo} continent={citys[index].continent} />
+        <Link className='none' to={"/city/" + citys[index+1].id}>
+            <CardsCity name={citys[index + 1].name} photo={citys[index + 1].photo} continent={citys[index + 1].continent} />
         </Link>
     </div>
-    <div className='flex direction-row space-around gap-5 wrap row_carousel'>
-        <button className='boton1 padding' onClick={prev}>Anterior</button>
-        <button className='boton1 padding' onClick={next}>Siguiente</button>
+    <div className='botons1'>
+        <button className='boton' onClick={prev}>Anterior</button>
+        <button className='boton' onClick={next}>Siguiente</button>
     </div>
     <div className='flex direction-row space-around gap-5 wrap row_carousel'>
-        <Link className='none padding' to={"/city/" + citys[index+2].id}>
-            <CardsCity className='padding' name={citys[index + 2].name} photo={citys[index + 2].photo} continent={citys[index + 2].continent} />
+        <Link className='none' to={"/city/" + citys[index+2].id}>
+            <CardsCity name={citys[index + 2].name} photo={citys[index + 2].photo} continent={citys[index + 2].continent} />
         </Link>
-        <Link className='none ' to={"/city/" + citys[index+3].id}>
-            <CardsCity className='padding' name={citys[index + 3].name} photo={citys[index + 3].photo} continent={citys[index + 3].continent} />
+        <Link className='none' to={"/city/" + citys[index+3].id}>
+            <CardsCity name={citys[index + 3].name} photo={citys[index + 3].photo} continent={citys[index + 3].continent} />
         </Link>
     </div>
 </div>

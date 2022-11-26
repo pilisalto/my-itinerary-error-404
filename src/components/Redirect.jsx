@@ -13,6 +13,10 @@ import Shows from './Shows'
 import Itinerary from './Itinerary'
 import NewHotel from './NewHotel'
 import NewCity from './NewCities'
+import MyCities from './MyCities'
+import MyHotels from './MyHotels'
+import MyTineraries from './MyTineraries'
+import MyShows from './MyShows'
 
 
 
@@ -33,6 +37,10 @@ export default function Redirect() {
             <Route path='/hotel/:setHotel'element={<Hotel/>} />
             <Route path="/newhotel" element={<NewHotel/>} />
             <Route path="/newcities" element={<NewCity/>}/>
+            <Route path="/mycities" element={<MyCities/>}/>
+            <Route path="/myhotels" element={<MyHotels/>}/>
+            <Route path="/mytineraries" element={<MyTineraries/>}/>
+            <Route path="/myshows" element={<MyShows/>}/>
       </Routes> 
     </>
   )

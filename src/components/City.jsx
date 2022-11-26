@@ -43,11 +43,9 @@ export default function DetailsCity() {
     <>
       <div className='image_back4'>
         <div><NavBar /></div>
-        <div className='home3'>
-          <div className='cards_flex column'>
-            <Cardscity className='cards_flex none column' name={api.name} photo={api.photo} continent={api.continent} population={api.population} text={"Population: "} />
+        <div className='container'>
+            <Cardscity className='card none column' name={api.name} photo={api.photo} continent={api.continent} population={api.population} text={"Population: "} />
             {basc}
-          </div>
         </div>
       </div>
 

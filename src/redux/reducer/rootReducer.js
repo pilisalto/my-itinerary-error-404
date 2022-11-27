@@ -1,4 +1,3 @@
-import { createReducer } from "@reduxjs/toolkit";
 import citiesReducer from "./citiesReducer";
 import hotelsReducer from "./hotelsReducer";
 import myCitiesReducer from "./myCitiesReducer";
@@ -6,6 +5,7 @@ import myHotelsReducer from "./myHotelsReducer";
 import myTinerariesReducer from "./myTinerariesReducer";
 import myShowsReducer from "./myShowsReducer";
 import usersReducer from "./usersReducer";
+import signInReducer from "./signInReducer"
 
 const rootReducer = {
     citiesReducer,
@@ -14,7 +14,8 @@ const rootReducer = {
     myHotelsReducer,
     myTinerariesReducer,
     myShowsReducer,
-    usersReducer
+    usersReducer,
+    signInReducer
 }
 
 export default rootReducer;

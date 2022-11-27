@@ -26,7 +26,7 @@ export default function NavBar() {
             </div>
 
             <div className='navbar'>
-                <Link to="/" onClick={mostrar1} className='none nav_style_navegation nav_style'>Home</Link>
+                <p  onClick={mostrar1} className='none nav_style_navegation nav_style'>Home</p>
                     {mostrarOcultar1 ? (
                         <div className='nav_bar nav_style row'>
                             <Link to="/cities" onClick={mostrar1} className='none nav_style'>Cities</Link>

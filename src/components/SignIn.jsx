@@ -1,33 +1,51 @@
 import React, { useState } from 'react'
-import users from "../data/user"
 import { Link } from 'react-router-dom'
 import ButtonGoogle from './ButtonGoogle'
 import NavBar from './NavBar'
+import { useSelector, useDispatch } from 'react-redux'
+import signInAction from "../redux/actions/signInAction"
+import { useNavigate } from 'react-router-dom'
 
 export default function SignIn() {
     let [nam, setNam] = useState("")
     let [pw, setPw] = useState("")
+    const navigation = useNavigate()
+    const users = useSelector(store => store.signInReducer.ingresar)
+    const dispatch = useDispatch()
+    const Swal = require('sweetalert2')
     let name = (e) => {
         setNam(e)
     }
     let pwd = (a) => {
         setPw(a)
     }
-    let val = (e) => {
-
-        let user = users.find(value => value.email === nam.toLowerCase())
-        if (user) {
-            if (pw === user.password) {
-                alert("Contraseña correcta")
-
+    let val = async (e) => {
+        e.preventDefault()
+        try{
+            let user = await dispatch(signInAction.ingresar({email:nam,password:pw}))
+            if(user.payload.success){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: user.payload.response.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                navigation("/")
             }
-            else if(pw.length){
-                alert("Contraseña incorrecta")
+            else{
+                Swal.fire({
+                    title: 'Error!',
+                    text: user.payload.response.message,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
             }
         }
-        else if(nam.length && pw.length){
-            alert("email no valid")
+        catch(error){
+            console.log(error)
         }
+
     }
     return (
         <>
@@ -39,7 +57,7 @@ export default function SignIn() {
                 <img src="img/imagenes/fondo1.png" class="avatar" alt="AvatarImage"/>
                 <h1 className='h1_2'>Login Here</h1>
                 <form>
-                    <label className='label'>Username</label>
+                    <label className='label'>Email</label>
                     <input className='input' onChange={e => name(e.target.value)} type="text" placeholder="Enter Email" required />
                     <label className='label'>Password</label>
                     <input className='input' onChange={a => pwd(a.target.value)} type="password" placeholder="Enter Password"  required/>

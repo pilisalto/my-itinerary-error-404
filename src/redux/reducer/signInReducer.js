@@ -43,11 +43,11 @@ const signInReducer = createReducer(initialState, (builder) => {
             let { user, token } = response
             let newState = {
                 ...state,
-                name: user.name,
-                photo: user.photo,
+                name: user.user.name,
+                photo: user.user.photo,
                 logged: true,
                 token: token,
-                role: user.role
+                role: user.user.role
             }
             return newState
         } else {

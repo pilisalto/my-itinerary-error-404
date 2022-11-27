@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Link} from "react-router-dom"
 
 export default function NavBar(props) {
-    let {logged} = props
+    let {logged, role} = props
     let [mostrarOcultar, setMostarOcultar] = useState(false)
     let [mostrarOcultar1, setMostarOcultar1] = useState(false)
     let mostrar1 = () => {
@@ -35,12 +35,15 @@ export default function NavBar(props) {
                             <Link to="/hotels" onClick={mostrar1} className='none nav_style'>Hotels</Link>
                             <Link to="/contact" onClick={mostrar1} className='none nav_style'>Contact</Link>
                             </> )
-                            :(<> <Link to="/cities" onClick={mostrar1} className='none nav_style'>Cities</Link>
+                            :(  role == "user" ?(<> <Link to="/cities" onClick={mostrar1} className='none nav_style'>Cities</Link>
                             <Link to="/hotels" onClick={mostrar1} className='none nav_style'>Hotels</Link>
                             <Link to="/mytineraries" onClick={mostrar1} className='none nav_style'>My Tineraries</Link>
-                            <Link to="/myshows" onClick={mostrar1} className='none nav_style'>My Shows</Link>
+                            <Link to="/myshows" onClick={mostrar1} className='none nav_style'>My Shows</Link></>) 
+                            :(<> <Link to="/cities" onClick={mostrar1} className='none nav_style'>Cities</Link>
+                            <Link to="/hotels" onClick={mostrar1} className='none nav_style'>Hotels</Link>
                             <Link to="/myhotels" onClick={mostrar1} className='none nav_style'>My Hotels</Link>
-                            <Link to="/mycities" onClick={mostrar1} className='none nav_style'>My Cities</Link></> )}
+                            <Link to="/mycities" onClick={mostrar1} className='none nav_style'>My Cities</Link></>)
+                            )}
                         </div>
                     )
                         : ("")}
@@ -56,8 +59,9 @@ export default function NavBar(props) {
                         </div>):(<> 
                         <div className='column'>
                         <p  onClick={mostrar} className='none nav_style'>Sign Out</p>
-                        <Link to="/newcities" onClick={mostrar} className='none nav_style'>New City</Link>
-                        <Link to="/newhotel" onClick={mostrar} className='none nav_style'>New Hotel</Link>
+                        {role === "user"? 
+                        (<Link to="/newhotel" onClick={mostrar} className='none nav_style'>New Hotel</Link>)
+                         :(<Link to="/newcities" onClick={mostrar} className='none nav_style'>New City</Link>)       }
                         </div>
                         </> )
                     )

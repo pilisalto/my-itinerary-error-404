@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 
 function App() {
-  let  {logged}  = useSelector(store => store.signInReducer)
+  let  {logged, role} = useSelector(store => store.signInReducer)
   let dispatch = useDispatch()
 
 
@@ -17,10 +17,10 @@ function App() {
       dispatch(signInAction.reIngresar(token.token.user))
     }
   }, [])
-  console.log(logged)
+  console.log(logged, role)
   return (
     <div>
-      <Layouts logged={logged}>
+      <Layouts logged={logged} role={role} >
       </Layouts>
     </div>
   );

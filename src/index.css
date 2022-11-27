@@ -116,6 +116,7 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  background-color: #212529;
 }
 
 .none {

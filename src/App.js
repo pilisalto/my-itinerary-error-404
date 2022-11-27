@@ -12,10 +12,12 @@ function App() {
 
   useEffect(() => {
     let token = JSON.parse(localStorage.getItem('token'))
+    console.log(token?.token.user)
     if(token){
       dispatch(signInAction.reIngresar(token.token.user))
     }
   }, [])
+  console.log(logged)
   return (
     <div>
       <Layouts logged={logged}>

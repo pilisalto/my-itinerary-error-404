@@ -74,7 +74,6 @@ export default function SignUp() {
     return (
         <>
             <div className='image_back2'>
-                <div><NavBar /></div>
                 <div className='container'>
                     <div className='container1' id="myForm">
                         <h1 className='h1_2'>Login Here</h1>

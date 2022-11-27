@@ -85,7 +85,6 @@ export default function MyHotels() {
     }
     return (
         <>
-            <div><NavBar /></div>
             <div>
             <div className='container'>
             <div className='container1'>

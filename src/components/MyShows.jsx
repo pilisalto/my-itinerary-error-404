@@ -87,7 +87,6 @@ export default function MyShows() {
     }
     return (
         <>
-            <div><NavBar /></div>
             <div>
                 <div className='container'>
                     <div className='container1'>

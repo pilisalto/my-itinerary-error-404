@@ -87,7 +87,6 @@ export default function MyCities() {
     }
     return (
         <>
-            <div><NavBar /></div>
             <div>
             <div className='container'>
             <div className='container1'>

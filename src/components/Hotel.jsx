@@ -37,7 +37,6 @@ export default function DetailsCity() {
   return (
     <>
       <div className='image_back2'>
-        <NavBar />
         <div className='container'>
           <HotelCard className='none card' name={api.name} photo={api.photo} capacity={api.capacity} />
           {basc}

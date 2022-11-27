@@ -6,7 +6,8 @@ let initialState = {
     photo: "",
     logged: false,
     token: "",
-    response: ""
+    response: "",
+    role:""
 }
 
 const signInReducer = createReducer(initialState, (builder) => {
@@ -23,7 +24,8 @@ const signInReducer = createReducer(initialState, (builder) => {
                 name: user.name,
                 photo: user.photo,
                 logged: true,
-                token: token
+                token: token,
+                role: user.role
             }
             return newState
         } else {
@@ -36,15 +38,16 @@ const signInReducer = createReducer(initialState, (builder) => {
     })
     builder.addCase(signInAction.reIngresar.fulfilled, (state, action) => {
         const { success, response , token} = action.payload
+        
         if (success) {
-            console.log(action.payload)
             let { user, token } = response
             let newState = {
                 ...state,
                 name: user.name,
                 photo: user.photo,
                 logged: true,
-                token: token
+                token: token,
+                role: user.role
             }
             return newState
         } else {

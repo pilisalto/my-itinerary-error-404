@@ -50,7 +50,6 @@ export default function SignIn() {
     return (
         <>
         <div className='image_back3'>
-        <div><NavBar/></div>
         <div className='container'>
         <h1 className='h1 row'>Sign<span className='resaltado'>In</span></h1>
             <div class="login-box">

@@ -31,7 +31,6 @@ const reIngresar = createAsyncThunk('reingresar', async (token) => {
     let headers = {headers: {'Authorization': `Bearer ${token}`}}
     try {
         let user = await axios.post(url,null,headers)
-        console.log(user.data.response)
         return {
             success: true,
             response: {
@@ -48,9 +47,29 @@ const reIngresar = createAsyncThunk('reingresar', async (token) => {
     }
 })
 
+const salir = createAsyncThunk('salir', async (token) => {
+    let url = `${BASE_URL}/api/auth/sign-out`
+    let headers = {headers: {'Authorization': `Bearer ${token}`}}
+    try {
+        let user = await axios.put(url,null,headers)
+        console.log(user)
+        return {
+            success: true,
+            response: user.data.message,
+        }
+    } catch (error) {
+        console.log(error)
+        return {
+            success: false,
+            response: error
+        }
+    }
+})
+
 const userLoginAction = {
     ingresar,
-    reIngresar
+    reIngresar,
+    salir
 }
 
 export default userLoginAction;

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route,Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import AutoToTop from './AutoToTop'
 import Cities from './Cities'
 import City from './City'
@@ -17,32 +17,34 @@ import MyCities from './MyCities'
 import MyHotels from './MyHotels'
 import MyTineraries from './MyTineraries'
 import MyShows from './MyShows'
+import ProtectedRoute from './ProtectedRoute'
 
 
 
 export default function Redirect(props) {
-  let {logged} = props
+  let { logged, role } = props
+  console.log(logged)
   return (
     <>
-    <AutoToTop/>
+      <AutoToTop />
       <Routes>
-            <Route path='/' element={<Home logged={logged} />}/>
-            <Route path='/cities' element={<Cities logged={logged} />}/>
-            <Route path='/hotels' element={<Hotels logged={logged} />} />
-            <Route path='/itinerary' element={<Itinerary logged={logged} />}/>
-            <Route path='/shows' element={<Shows logged={logged} />}/>
-            <Route path='/contact' element={<Contact logged={logged} />}/>
-            <Route path='/signup' element={<SignUp logged={logged} />}/>
-            <Route path='/signin'element={<SignIn logged={logged} />} />
-            <Route path='/city/:setIndex'element={<City logged={logged} />} />
-            <Route path='/hotel/:setHotel'element={<Hotel logged={logged} />} />
-            <Route path="/newhotel" element={<NewHotel logged={logged} />} />
-            <Route path="/newcities" element={<NewCity logged={logged} />}/>
-            <Route path="/mycities" element={<MyCities logged={logged} />}/>
-            <Route path="/myhotels" element={<MyHotels logged={logged} />}/>
-            <Route path="/mytineraries" element={<MyTineraries logged={logged} />}/>
-            <Route path="/myshows" element={<MyShows logged={logged} />}/>
-      </Routes> 
+        <Route path='/' element={<Home />} />
+        <Route path='/cities' element={<Cities />} />
+        <Route path='/hotels' element={<Hotels />} />
+        <Route path='/itinerary' element={<Itinerary />} />
+        <Route path='/shows' element={<Shows />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/city/:setIndex' element={<City />} />
+        <Route path='/hotel/:setHotel' element={<Hotel />} />
+        <Route path="/newhotel" element={<NewHotel />} />
+        <Route path="/newcities" element={<NewCity />} />
+        <Route path="/mycities" element={<MyCities />} />
+        <Route path="/myhotels" element={<MyHotels />} />
+        <Route path="/mytineraries" element={<MyTineraries />} />
+        <Route path="/myshows" element={<MyShows />} />
+      </Routes>
     </>
   )
 }

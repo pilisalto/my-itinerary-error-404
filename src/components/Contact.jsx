@@ -7,7 +7,6 @@ export default function Contact() {
     return (
         <>
         <div className='image_back6'>
-        <div><NavBar/></div>
         <div className='container'>
         <div class="contact-form column">
             <h4 className='h1_2 column'>Contact us</h4>

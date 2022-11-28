@@ -77,7 +77,7 @@ export default function MyTineraries() {
 
     async function ValidateInfo(e) {
         e.preventDefault()
-        await axios.put(`${BASE_URL}/api/itineraries/${_id} `, addCity)
+        await axios.put(`${BASE_URL}/api/itineraries/${addCity._id} `, addCity)
             .then(function (response) {
                 if (response.data.success) {
                     Swal.fire({
@@ -87,8 +87,7 @@ export default function MyTineraries() {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    window.location.reload()
-
+                    dispatch(myTinerariesAction.filtrarTineraries(_id))
                 }
                 else {
                     Swal.fire({
@@ -123,7 +122,7 @@ export default function MyTineraries() {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    window.location.reload()
+                    dispatch(myTinerariesAction.filtrarTineraries(_id))
 
                 }
                 else {

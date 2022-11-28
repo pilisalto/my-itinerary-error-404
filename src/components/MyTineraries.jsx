@@ -13,7 +13,8 @@ import citiesAction from '../redux/actions/citiesAction'
 
 export default function MyTineraries() {
     const filtrarTineraries = useSelector(store => store.myTinerariesReducer.tinerariesFiltrados)
-    const { user, _id } = useSelector(store => store.signInReducer)
+    const { user, _id , token} = useSelector(store => store.signInReducer)
+    let headers = {headers: {'Authorization': `Bearer ${token}`}}
     const listaCities = useSelector(store => store.citiesReducer.listaCities)
     const citiesFiltrados = useSelector(store => store.citiesReducer.citiesFiltrados)
     const dispatch = useDispatch()
@@ -77,7 +78,7 @@ export default function MyTineraries() {
 
     async function ValidateInfo(e) {
         e.preventDefault()
-        await axios.put(`${BASE_URL}/api/itineraries/${addCity._id} `, addCity)
+        await axios.put(`${BASE_URL}/api/itineraries/${addCity._id} `, addCity,headers)
             .then(function (response) {
                 if (response.data.success) {
                     Swal.fire({
@@ -112,7 +113,7 @@ export default function MyTineraries() {
     async function ValidateInfo1(e) {
         e.preventDefault()
         console.log(addCity1)
-        await axios.post(`${BASE_URL}/api/itineraries`, addCity1)
+        await axios.post(`${BASE_URL}/api/itineraries`, addCity1, headers)
             .then(function (response) {
                 if (response.data.success) {
                     Swal.fire({

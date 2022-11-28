@@ -11,7 +11,8 @@ import Shows from './Shows'
 
 export default function MyShows() {
     const filtrarShows = useSelector(store => store.myShowsReducer.showsFiltrados)
-    const { user, _id } = useSelector(store => store.signInReducer)
+    const { user, _id , token} = useSelector(store => store.signInReducer)
+    let headers = {headers: {'Authorization': `Bearer ${token}`}}
     const dispatch = useDispatch()
     const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
@@ -70,7 +71,7 @@ export default function MyShows() {
 
     async function ValidateInfo(e) {
         e.preventDefault()
-        await axios.put(`${BASE_URL}/api/shows/${addCity._id} `, addCity)
+        await axios.put(`${BASE_URL}/api/shows/${addCity._id} `, addCity, headers)
             .then(function (response) {
                 console.log(response.data)
                 if (response.data.success) {
@@ -106,7 +107,7 @@ export default function MyShows() {
     }
     async function ValidateInfo1(e) {
         e.preventDefault()
-        await axios.post(`${BASE_URL}/api/shows`, addCity1)
+        await axios.post(`${BASE_URL}/api/shows`, addCity1, headers)
             .then(function (response) {
                 console.log(response.data)
                 if (response.data.success) {

@@ -7,7 +7,9 @@ let initialState = {
     logged: false,
     token: "",
     response: "",
-    role:""
+    role:"",
+    _id:"",
+    user:""
 }
 
 const signInReducer = createReducer(initialState, (builder) => {
@@ -24,6 +26,7 @@ const signInReducer = createReducer(initialState, (builder) => {
                 photo: user.photo,
                 logged: true,
                 token: token,
+                _id: user._id,
                 role: user.role
             }
             return newState
@@ -37,16 +40,18 @@ const signInReducer = createReducer(initialState, (builder) => {
     })
     builder.addCase(signInAction.reIngresar.fulfilled, (state, action) => {
         const { success, response , token} = action.payload
-        localStorage.removeItem('token')
+        
         if (success) {
             let { user, token } = response
+            console.log(user)
             let newState = {
                 ...state,
                 name: user.user.name,
                 photo: user.user.photo,
                 logged: true,
                 token: token,
-                role: user.user.role
+                role: user.user.role,
+                _id: user.user._id
             }
             return newState
         } else {
@@ -59,7 +64,7 @@ const signInReducer = createReducer(initialState, (builder) => {
     })
     builder.addCase(signInAction.salir.fulfilled, (state, action) => {
         const { success, response , token} = action.payload
-        
+        localStorage.removeItem('token')
         if (success) {
             let { user, token } = response
             console.log(response)
@@ -78,6 +83,12 @@ const signInReducer = createReducer(initialState, (builder) => {
                 response: {message:action.payload.response}
             }
             return newState
+        }
+    })
+    builder.addCase(signInAction.getUser.fulfilled, (state, action) => {
+        console.log(action)
+        if (action.payload.success) {
+            return { ...state, user: action.payload.response }
         }
     })
 

@@ -18,12 +18,12 @@ import MyHotels from './MyHotels'
 import MyTineraries from './MyTineraries'
 import MyShows from './MyShows'
 import ProtectedRoute from './ProtectedRoute'
+import Profile from './Profile'
 
 
 
 export default function Redirect(props) {
   let { logged, role } = props
-  console.log(logged)
   return (
     <>
       <AutoToTop />
@@ -44,6 +44,7 @@ export default function Redirect(props) {
           <Route path="/newcities" element={<NewCity />} />
         </Route>
         <Route element={<ProtectedRoute isAllowed={!logged && role === "user"} redirect={"/"} />} >
+          <Route path="/profile" element={<Profile/>}/>
           <Route path="/mytineraries" element={<MyTineraries />} />
           <Route path="/myshows" element={<MyShows />} />
           <Route path="/newhotel" element={<NewHotel />} />

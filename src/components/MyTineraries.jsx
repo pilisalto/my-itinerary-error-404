@@ -27,7 +27,7 @@ export default function MyTineraries() {
         "descripcion": "",
         "price":"",
         "duration": "",
-        "userId": ""
+        "userId": _id
 
     })
     const [addCity1, setAddCity1] = useState({
@@ -63,10 +63,13 @@ export default function MyTineraries() {
         dispatch(myTinerariesAction.filtrarTineraries(_id));
         dispatch(citiesAction.filtrarCities(["", ""]))
     }, []);
-
     async function deleteTineraries(e) {
         console.log(e)
-        dispatch(myTinerariesAction.eliminarTineraries(e))
+        let g = {
+            idCity: e,
+            token: token
+        }
+        await dispatch(myTinerariesAction.eliminarTineraries(g))
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -74,8 +77,8 @@ export default function MyTineraries() {
             showConfirmButton: false,
             timer: 1500
         })
+        await dispatch(myTinerariesAction.filtrarTineraries(_id))
     }
-
     async function ValidateInfo(e) {
         e.preventDefault()
         await axios.put(`${BASE_URL}/api/itineraries/${addCity._id} `, addCity,headers)
@@ -88,7 +91,7 @@ export default function MyTineraries() {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    dispatch(myTinerariesAction.filtrarTineraries(_id))
+                    
                 }
                 else {
                     Swal.fire({
@@ -108,6 +111,7 @@ export default function MyTineraries() {
                     confirmButtonText: 'Cool'
                 })
             })
+            dispatch(myTinerariesAction.filtrarTineraries(_id))
 
     }
     async function ValidateInfo1(e) {
@@ -151,7 +155,7 @@ export default function MyTineraries() {
             <div className='image_back4'>
                 <div className='container'>
                     <div className='container1'>
-                        <h1 className='h1_2'>Enter the Itinerary information</h1>
+                        <h1 className='h1_2'>Edit the Itinerary information</h1>
                         <form>
                             <label className='.titulo' htmlFor="">Id</label>
                             <input className='input' name="_id" type="text" placeholder='_id' onChange={readInput} required />
@@ -167,11 +171,9 @@ export default function MyTineraries() {
                             <input className='input' name="duration" type="text" placeholder='duration' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Price</label>
                             <input className='input' name="price" type="text" placeholder='price' onChange={readInput} required />
-                            <label className='.titulo' htmlFor="">Your Id</label>
-                            <input className='input' name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
                             <button className=' boton a send1' onClick={e => ValidateInfo(e)}>Edit Tinerary</button>
                         </form>
-                        <h1 className='h1_2'>Edit the Itinerary information</h1>
+                        <h1 className='h1_2'>New Itinerary information</h1>
                     <form action="">
                         <label className='.titulo' htmlFor="">Name:
                         <input className='input' onChange={readInput1} name="name" type="text" place="Name" id="name" />

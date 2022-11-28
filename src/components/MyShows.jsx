@@ -23,7 +23,7 @@ export default function MyShows() {
         "photo": "",
         "price": "",
         "date": "",
-        "userId": ""
+        "userId": _id
     })
     const [addCity1, setAddCity1] = useState({
         "hotelId": "",
@@ -54,12 +54,16 @@ export default function MyShows() {
     }
 
     useEffect(() => {
-        dispatch(myShowsAction.filtrarShows(_id));
+       dispatch(myShowsAction.filtrarShows(_id));
     }, []);
 
     async function deleteShows(e) {
         console.log(e)
-        dispatch(myShowsAction.eliminarShows(e))
+        let g = {
+            idCity:e,
+            token:token
+         }
+        await dispatch(myShowsAction.eliminarShows(g))
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -67,11 +71,12 @@ export default function MyShows() {
             showConfirmButton: false,
             timer: 1500
         })
+        await dispatch(myShowsAction.filtrarShows(_id))
     }
 
     async function ValidateInfo(e) {
         e.preventDefault()
-        await axios.put(`${BASE_URL}/api/shows/${addCity._id} `, addCity, headers)
+        await axios.patch(`${BASE_URL}/api/shows/${addCity._id} `, addCity, headers)
             .then(function (response) {
                 console.log(response.data)
                 if (response.data.success) {
@@ -162,9 +167,7 @@ export default function MyShows() {
                             <input className='input' name="price" type="number" placeholder='Price' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Date</label>
                             <input className='input' name="date" type="number" placeholder='date' onChange={readInput} required />
-                            <label className='.titulo' htmlFor="">Your Id</label>
-                            <input className='input' name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
-
+                
                         <button className='boton a send1' onClick={e => ValidateInfo(e)}>Edit Show</button>
                         </form>
                         <h1 className='h1_2'>Edit the Show information</h1>
@@ -188,7 +191,7 @@ export default function MyShows() {
                         <input className='input' onChange={readInput1} name="date" type="number" place="Date" id="date" />
                         </label>
                         
-                        <button className='boton a send1' onClick={e => ValidateInfo1(e)}>New Tinerary</button>
+                        <button className='boton a send1' onClick={e => ValidateInfo1(e)}>New Show</button>
                     </form>
                     </div>
                     <div> {filtrarShows.map((e) => (<> <Shows Shows name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button className=' boton a send1' name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>

@@ -18,6 +18,7 @@ const eliminarShows = createAsyncThunk("eliminarShows", async ( idCity ) => {
       const res = await axios.delete(url);
       return {
         success: true,
+        id:idCity
       };
     } catch (error) {
       console.log(error);

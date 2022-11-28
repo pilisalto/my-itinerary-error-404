@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route,Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import AutoToTop from './AutoToTop'
 import Cities from './Cities'
 import City from './City'
@@ -17,31 +17,39 @@ import MyCities from './MyCities'
 import MyHotels from './MyHotels'
 import MyTineraries from './MyTineraries'
 import MyShows from './MyShows'
+import ProtectedRoute from './ProtectedRoute'
+import Profile from './Profile'
 
 
 
-export default function Redirect() {
+export default function Redirect(props) {
+  let { logged, role } = props
   return (
     <>
-    <AutoToTop/>
+      <AutoToTop />
       <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/cities' element={<Cities/>}/>
-            <Route path='/hotels' element={<Hotels/>} />
-            <Route path='/itinerary' element={<Itinerary/>}/>
-            <Route path='/shows' element={<Shows/>}/>
-            <Route path='/contact' element={<Contact/>}/>
-            <Route path='/signup' element={<SignUp/>}/>
-            <Route path='/signin'element={<SignIn/>} />
-            <Route path='/city/:setIndex'element={<City/>} />
-            <Route path='/hotel/:setHotel'element={<Hotel/>} />
-            <Route path="/newhotel" element={<NewHotel/>} />
-            <Route path="/newcities" element={<NewCity/>}/>
-            <Route path="/mycities" element={<MyCities/>}/>
-            <Route path="/myhotels" element={<MyHotels/>}/>
-            <Route path="/mytineraries" element={<MyTineraries/>}/>
-            <Route path="/myshows" element={<MyShows/>}/>
-      </Routes> 
+        <Route path='/*' element={<Home />} />
+        <Route path='/cities' element={<Cities />} />
+        <Route path='/hotels' element={<Hotels />} />
+        <Route path='/itinerary' element={<Itinerary />} />
+        <Route path='/shows' element={<Shows />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/city/:setIndex' element={<City />} />
+        <Route path='/hotel/:setHotel' element={<Hotel />} />
+        <Route element={<ProtectedRoute isAllowed={!logged && role === "admin"} redirect={"/"} />} >
+          <Route path="/mycities" element={<MyCities />} />
+          <Route path="/myhotels" element={<MyHotels />} />
+          <Route path="/newcities" element={<NewCity />} />
+        </Route>
+        <Route element={<ProtectedRoute isAllowed={!logged && role === "user"} redirect={"/"} />} >
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/mytineraries" element={<MyTineraries />} />
+          <Route path="/myshows" element={<MyShows />} />
+          <Route path="/newhotel" element={<NewHotel />} />
+        </Route>
+      </Routes>
     </>
   )
 }

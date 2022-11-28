@@ -45,7 +45,6 @@ export default function MyHotels() {
             showConfirmButton: false,
             timer: 1500
           })
-        window.location.reload()
     }
 
     async function ValidateInfo(e) {
@@ -86,7 +85,6 @@ export default function MyHotels() {
     }
     return (
         <>
-            <div><NavBar /></div>
             <div>
             <div className='container'>
             <div className='container1'>

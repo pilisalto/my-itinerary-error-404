@@ -4,7 +4,8 @@ import myHotelsAction from "../actions/myHotelsAction";
 const initialState= {
     loading: false, 
     hotelsFiltrados:[],
-    error: false
+    error: false,
+    id:""
 }
 
 const myHotelsReducer = createReducer(initialState, (builder)=>{
@@ -17,7 +18,12 @@ const myHotelsReducer = createReducer(initialState, (builder)=>{
         return {...state, loading: false, hotelsFiltrados:[]}
     })
     builder.addCase(myHotelsAction.eliminarHotels.fulfilled, (state, action)=>{
-        return {...state, loading: false}
+        const deleteId = action.meta.arg
+        let newState = {
+            ...state,
+            hotelsFiltrados: state.hotelsFiltrados.filter(e => e._id != deleteId)
+        }
+        return newState
     })
 } )
 

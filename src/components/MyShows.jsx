@@ -11,6 +11,8 @@ import Shows from './Shows'
 
 export default function MyShows() {
     const filtrarShows = useSelector(store => store.myShowsReducer.showsFiltrados)
+    const { user, _id , token} = useSelector(store => store.signInReducer)
+    let headers = {headers: {'Authorization': `Bearer ${token}`}}
     const dispatch = useDispatch()
     const Swal = require('sweetalert2')
     const [addCity, setAddCity] = useState({
@@ -23,6 +25,16 @@ export default function MyShows() {
         "date": "",
         "userId": ""
     })
+    const [addCity1, setAddCity1] = useState({
+        "hotelId": "",
+        "name": "",
+        "description": "",
+        "photo": "",
+        "price": "",
+        "date": "",
+        "userId": _id
+
+    })
 
     const readInput = (e) => {
         const value = e.target.value
@@ -32,9 +44,17 @@ export default function MyShows() {
             [prop]: value
         })
     }
+    const readInput1 = (e) => {
+        const value = e.target.value
+        const prop = e.target.name
+        setAddCity1({
+            ...addCity1,
+            [prop]: value
+        })
+    }
 
     useEffect(() => {
-        dispatch(myShowsAction.filtrarShows("636e63981471b35a5c064d4d"));
+        dispatch(myShowsAction.filtrarShows(_id));
     }, []);
 
     async function deleteShows(e) {
@@ -51,7 +71,7 @@ export default function MyShows() {
 
     async function ValidateInfo(e) {
         e.preventDefault()
-        await axios.put(`${BASE_URL}/api/shows/${addCity._id} `, addCity)
+        await axios.put(`${BASE_URL}/api/shows/${addCity._id} `, addCity, headers)
             .then(function (response) {
                 console.log(response.data)
                 if (response.data.success) {
@@ -62,7 +82,43 @@ export default function MyShows() {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    window.location.reload()
+                    dispatch(myShowsAction.filtrarShows(_id))
+
+                }
+                else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: response.data.message.join("- - - - -"),
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'The Shows was not edit',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+            })
+
+    }
+    async function ValidateInfo1(e) {
+        e.preventDefault()
+        await axios.post(`${BASE_URL}/api/shows`, addCity1, headers)
+            .then(function (response) {
+                console.log(response.data)
+                if (response.data.success) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Show Edit',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    dispatch(myShowsAction.filtrarShows(_id))
 
                 }
                 else {
@@ -111,6 +167,28 @@ export default function MyShows() {
 
                             <button className='boton a send1' onClick={e => ValidateInfo(e)}>Edit Show</button>
                         </form>
+                        <form action="">
+                        <label htmlFor="">Hotel Id:
+                        <input onChange={readInput1} name="hotelId" type="text" place="Hotel Id" id="hotelId" />
+                        </label>
+                        <label htmlFor="">Name:
+                        <input onChange={readInput1} name="name" type="text" place="Name" id="name" />
+                        </label>
+                        <label htmlFor="">Photo:
+                        <input onChange={readInput1} name="photo" type="text" place='Photo' id="Photo1" />
+                        </label>
+                        <label htmlFor="">Description:
+                        <input onChange={readInput1} name="description" type="text" place="Description" id="description" />
+                        </label>
+                        <label htmlFor="">Price:
+                        <input onChange={readInput1} name="price" type="number" place="Price" id="price" />
+                        </label>
+                        <label htmlFor="">Date:
+                        <input onChange={readInput1} name="date" type="number" place="Date" id="date" />
+                        </label>
+                        
+                        <button className=' buoton a send1' onClick={e => ValidateInfo1(e)}>New Tinerary</button>
+                    </form>
                     </div>
                     <div> {filtrarShows.map((e) => (<> <Shows Shows name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>
                 </div>

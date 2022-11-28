@@ -33,7 +33,6 @@ export default function Cities() {
  return (
     <>
       <div className='image_back5'>
-        <div><NavBar/></div>
         <div className='container'>
           <h1 className='h1 row'>H<span className='resaltado'>o</span>tels</h1>
             <div className='check'>{checkbox}</div>

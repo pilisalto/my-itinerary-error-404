@@ -16,7 +16,12 @@ const myShowsReducer = createReducer(initialState, (builder)=>{
         return {...state, loading: false, showsFiltrados:[]}
     })
     builder.addCase(myShowsAction.eliminarShows.fulfilled, (state, action)=>{
-        return {...state, loading: false}
+        const deleteId = action.meta.arg
+        let newState = {
+            ...state,
+            showsFiltrados: state.showsFiltrados.filter(e => e._id != deleteId)
+        }
+        return newState
     })
 } )
 

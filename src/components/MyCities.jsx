@@ -45,7 +45,7 @@ export default function MyCities() {
             showConfirmButton: false,
             timer: 1500
           })
-          window.location.reload()       
+    
 
     }
 
@@ -87,7 +87,6 @@ export default function MyCities() {
     }
     return (
         <>
-            <div><NavBar /></div>
             <div>
             <div className='container'>
             <div className='container1'>

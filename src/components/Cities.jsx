@@ -50,7 +50,6 @@ export default function Cities() {
   return (
     <>
       <div className='image_back4'>
-        <div><NavBar /></div>
         <div className='container'>
           <h1 class="h1 row">Ci<span className='resaltado'>t</span>ies</h1>
           <div className='container'>

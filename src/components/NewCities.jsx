@@ -65,7 +65,6 @@ export default function FormCities() {
     return (
 
         <div className='image_back2'>
-        <div><NavBar/></div>
         <div className='container'>
             <div className='container1'>
             <h1 className='h1_2'>Enter the City information</h1>

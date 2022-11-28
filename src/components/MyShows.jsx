@@ -143,10 +143,10 @@ export default function MyShows() {
     }
     return (
         <>
-            <div>
+            <div className='image_back'>
                 <div className='container'>
                     <div className='container1'>
-                        <h1 className='h1_2'>nter the Show information</h1>
+                        <h1 className='h1_2'>Enter the Show information</h1>
                         <form>
                             <label className='.titulo' htmlFor="">Id</label>
                             <input className='input' name="_id" type="text" placeholder='_id' onChange={readInput} required />
@@ -165,32 +165,33 @@ export default function MyShows() {
                             <label className='.titulo' htmlFor="">Your Id</label>
                             <input className='input' name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
 
-                            <button className='boton a send1' onClick={e => ValidateInfo(e)}>Edit Show</button>
+                        <button className='boton a send1' onClick={e => ValidateInfo(e)}>Edit Show</button>
                         </form>
+                        <h1 className='h1_2'>Edit the Show information</h1>
                         <form action="">
-                        <label htmlFor="">Hotel Id:
-                        <input onChange={readInput1} name="hotelId" type="text" place="Hotel Id" id="hotelId" />
+                        <label className='.titulo' htmlFor="">Hotel Id:
+                        <input className='input' onChange={readInput1} name="hotelId" type="text" place="Hotel Id" id="hotelId" />
                         </label>
-                        <label htmlFor="">Name:
-                        <input onChange={readInput1} name="name" type="text" place="Name" id="name" />
+                        <label className='.titulo' htmlFor="">Name:
+                        <input className='input' onChange={readInput1} name="name" type="text" place="Name" id="name" />
                         </label>
-                        <label htmlFor="">Photo:
-                        <input onChange={readInput1} name="photo" type="text" place='Photo' id="Photo1" />
+                        <label className='.titulo' htmlFor="">Photo:
+                        <input className='input' onChange={readInput1} name="photo" type="text" place='Photo' id="Photo1" />
                         </label>
-                        <label htmlFor="">Description:
-                        <input onChange={readInput1} name="description" type="text" place="Description" id="description" />
+                        <label className='.titulo' htmlFor="">Description:
+                        <input className='input' onChange={readInput1} name="description" type="text" place="Description" id="description" />
                         </label>
-                        <label htmlFor="">Price:
-                        <input onChange={readInput1} name="price" type="number" place="Price" id="price" />
+                        <label className='.titulo' htmlFor="">Price:
+                        <input className='input' onChange={readInput1} name="price" type="number" place="Price" id="price" />
                         </label>
-                        <label htmlFor="">Date:
-                        <input onChange={readInput1} name="date" type="number" place="Date" id="date" />
+                        <label className='.titulo' htmlFor="">Date:
+                        <input className='input' onChange={readInput1} name="date" type="number" place="Date" id="date" />
                         </label>
                         
-                        <button className=' buoton a send1' onClick={e => ValidateInfo1(e)}>New Tinerary</button>
+                        <button className='boton a send1' onClick={e => ValidateInfo1(e)}>New Tinerary</button>
                     </form>
                     </div>
-                    <div> {filtrarShows.map((e) => (<> <Shows Shows name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>
+                    <div> {filtrarShows.map((e) => (<> <Shows Shows name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button className=' boton a send1' name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>
                 </div>
             </div>
         </>

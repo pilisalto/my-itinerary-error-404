@@ -184,6 +184,13 @@ body {
   text-shadow: 3px 2px 4px rgba(0,0,0,0.3);
 }
 
+.img_user {
+  min-width: 300px;
+  min-height: 11vh;
+  border-radius: 50%;
+  left: calc(50% - 50px);
+}
+
 .botons {
   display: flex;
   flex-direction: row;

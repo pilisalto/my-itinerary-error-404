@@ -7,7 +7,7 @@ export default function activitie(props) {
 let {name, photo, descripcion, price} = props
   return (
     <>
-        <div className='container'>
+        <div>
       <div className='card'>
                 <h2 className='info-card'>{name}</h2>
                 <img className='img' src={photo} alt={name} />

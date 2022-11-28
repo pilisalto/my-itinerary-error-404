@@ -70,20 +70,18 @@ export default function Profile() {
         <div className='image_back2'>
             <div className='container'>
                 <div>
-                    <div >
-                        <h4 className='h4_2'>Name:</h4>
-                        <h4 className='h4_2'>{user.name}</h4>
-                        <h4 className='h4_2'>{user.lastName}</h4>
-                        <img src={user.photo} />
-                        <h4 className='h4_2'>Age: </h4>
-                        <h4 className='h4_2'>{user.age}</h4>
+                    <div>
+                        <img className='img_user' src={user.photo}/>
+                        <h4 className='h4_2 row'><p>Name: </p> {user.name}</h4>
+                        <h4 className='h4_2 row'><p>Last Name: </p> {user.lastName}</h4>
+                        <h4 className='h4_2 row'><p>Age: </p> {user.age}</h4>
                     </div>
                     <div className='container1'>
                         <h1 className='h1_2'>My Profile</h1>
                         <form action="">
-                            <label className='label'>Name: </label>
+                            <label className='label '>Name: </label>
                             <input className='input' onChange={readInput} name="name" type="text" place="Name" />
-                            <label className='label'>last Name: </label>
+                            <label className='label'>Last Name: </label>
                             <input className='input' onChange={readInput} name="lastName" type="text" place='Last Name' />
                             <label className='label'>Photo: </label>
                             <input className='input' onChange={readInput} name="photo" type="text" place='Photo' />

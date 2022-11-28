@@ -148,53 +148,54 @@ export default function MyTineraries() {
     }
     return (
         <>
-            <div>
+            <div className='image_back4'>
                 <div className='container'>
                     <div className='container1'>
                         <h1 className='h1_2'>Enter the Itinerary information</h1>
                         <form>
                             <label className='.titulo' htmlFor="">Id</label>
-                            <input name="_id" type="text" placeholder='_id' onChange={readInput} required />
+                            <input className='input' name="_id" type="text" placeholder='_id' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">City Id</label>
-                            <input name="cityId" type="text" placeholder='City Id' onChange={readInput} required />
+                            <input className='input' name="cityId" type="text" placeholder='City Id' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Name</label>
-                            <input name="name" type="text" placeholder='Tinerary´s Name' onChange={readInput} required />
+                            <input className='input' name="name" type="text" placeholder='Tinerary´s Name' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Photo</label>
-                            <input name="photo" type="text" placeholder='Photo' onChange={readInput} required />
+                            <input className='input' name="photo" type="text" placeholder='Photo' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Descripcion</label>
-                            <input name="descripcion" type="text" placeholder='descripcion' onChange={readInput} required />
+                            <input className='input' name="descripcion" type="text" placeholder='descripcion' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Duration</label>
-                            <input name="duration" type="text" placeholder='duration' onChange={readInput} required />
+                            <input className='input' name="duration" type="text" placeholder='duration' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Price</label>
-                            <input name="price" type="text" placeholder='price' onChange={readInput} required />
+                            <input className='input' name="price" type="text" placeholder='price' onChange={readInput} required />
                             <label className='.titulo' htmlFor="">Your Id</label>
-                            <input name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
-                            <button className=' buoton a send1' onClick={e => ValidateInfo(e)}>Edit Tinerary</button>
+                            <input className='input' name="userId" type="text" placeholder='Your Id' onChange={readInput} required />
+                            <button className=' boton a send1' onClick={e => ValidateInfo(e)}>Edit Tinerary</button>
                         </form>
-                    </div>
+                        <h1 className='h1_2'>Edit the Itinerary information</h1>
                     <form action="">
-                        <label htmlFor="">Name:
-                        <input onChange={readInput1} name="name" type="text" place="Name" id="name" />
+                        <label className='.titulo' htmlFor="">Name:
+                        <input className='input' onChange={readInput1} name="name" type="text" place="Name" id="name" />
                         </label>
-                        <label htmlFor="">Photo:
-                        <input onChange={readInput1} name="photo" type="text" place='Photo' id="Photo1" />
+                        <label className='.titulo' htmlFor="">Photo:
+                        <input className='input' onChange={readInput1} name="photo" type="text" place='Photo' id="Photo1" />
                         </label>
-                        <label htmlFor="">Description:
-                        <input onChange={readInput1} name="descripcion" type="text" place="Description" id="description" />
+                        <label className='.titulo' htmlFor="">Description:
+                        <input className='input' onChange={readInput1} name="descripcion" type="text" place="Description" id="description" />
                         </label>
-                        <label htmlFor="">Price:
-                        <input onChange={readInput1} name="price" type="number" place="Price" id="price" />
+                        <label className='.titulo' htmlFor="">Price:
+                        <input className='input' onChange={readInput1} name="price" type="number" place="Price" id="price" />
                         </label>
-                        <label htmlFor="">Duration:
-                        <input onChange={readInput1} name="duration" type="number" place="Duration" id="duration" />
+                        <label className='.titulo' htmlFor="">Duration:
+                        <input className='input' onChange={readInput1} name="duration" type="number" place="Duration" id="duration" />
                         </label>
-                        <label htmlFor='cityId'>Select a city :</label>
+                        <label className='.titulo' htmlFor='cityId'>Select a city :</label>
                         <select onChange={readInput1} name="cityId" id="cityId">
                             {citiesFiltrados.map(city => <option  name="cityId" key={city._id} value={city._id}>{city.name}</option>)}
                         </select>
-                        <button className=' buoton a send1' onClick={e => ValidateInfo1(e)}>New Tinerary</button>
+                        <button className=' boton a send1' onClick={e => ValidateInfo1(e)}>New Tinerary</button>
                     </form>
-                    <div> {filtrarTineraries.map((e) => (<> <Itinerary name={e.name} photo={e.photo[0]} descripcion={e.descripcion} price={e.price} /> <button name={e._id} onClick={e => deleteTineraries(e.target.name)}>Delete</button></>))} </div>
+                </div>
+                <div> {filtrarTineraries.map((e) => (<> <Itinerary name={e.name} photo={e.photo[0]} descripcion={e.descripcion} price={e.price} /> <button className='boton a send1' name={e._id} onClick={e => deleteTineraries(e.target.name)}>Delete</button></>))} </div>
                 </div>
             </div>
         </>

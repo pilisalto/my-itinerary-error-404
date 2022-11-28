@@ -6,9 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 
 function App() {
-  let  {logged, role} = useSelector(store => store.signInReducer)
+  let  {logged, role, _id} = useSelector(store => store.signInReducer)
   let dispatch = useDispatch()
-
 
   useEffect(() => {
     let token = JSON.parse(localStorage.getItem('token'))
@@ -17,7 +16,7 @@ function App() {
       dispatch(signInAction.reIngresar(token.token.user))
     }
   }, [])
-  console.log(logged, role)
+  console.log(logged, role, _id)
   return (
     <div>
       <Layouts logged={logged} role={role} >

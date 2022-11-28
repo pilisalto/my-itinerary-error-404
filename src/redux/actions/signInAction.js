@@ -66,10 +66,28 @@ const salir = createAsyncThunk('salir', async (token) => {
     }
 })
 
+const getUser = createAsyncThunk('getUser', async (datos) => { 
+    let url = `${BASE_URL}/api/auth/me/${datos}`
+    try {
+        let user = await axios.get(url)
+        console.log(user)
+        return {
+            success: user.data.success,
+            response: user.data.response
+        }
+    } catch (error) {
+        return {
+            success: false,
+            response: error.response.data.message
+        }
+    }
+})
+
 const userLoginAction = {
     ingresar,
     reIngresar,
-    salir
+    salir, 
+    getUser
 }
 
 export default userLoginAction;

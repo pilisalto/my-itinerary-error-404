@@ -19,6 +19,7 @@ import MyTineraries from './MyTineraries'
 import MyShows from './MyShows'
 import ProtectedRoute from './ProtectedRoute'
 import Profile from './Profile'
+import NewReaction from './NewReaction'
 
 
 
@@ -42,6 +43,7 @@ export default function Redirect(props) {
           <Route path="/mycities" element={<MyCities />} />
           <Route path="/myhotels" element={<MyHotels />} />
           <Route path="/newcities" element={<NewCity />} />
+          <Route path='/newreactions' element={<NewReaction/>} />
         </Route>
         <Route element={<ProtectedRoute isAllowed={logged && role === "user"} redirect={"/"} />} >
           <Route path="/profile" element={<Profile/>}/>

@@ -32,7 +32,7 @@ export default function DetailsCity() {
 
   if(it.length){
    
-    basc = it.map(e => <Itinirary name={e.name} photo={e.photo[1]} descripcion={e.descripcion} price={e.price} />)
+    basc = it.map(e => <Itinirary name={e.name} photo={e.photo[1]} descripcion={e.descripcion} price={e.price} _id={e._id} />)
     
    
   }

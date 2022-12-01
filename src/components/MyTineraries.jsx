@@ -197,7 +197,7 @@ export default function MyTineraries() {
                         <button className=' boton a send1' onClick={e => ValidateInfo1(e)}>New Tinerary</button>
                     </form>
                 </div>
-                <div> {filtrarTineraries.map((e) => (<> <Itinerary name={e.name} photo={e.photo[0]} descripcion={e.descripcion} price={e.price} /> <button className='boton a send1' name={e._id} onClick={e => deleteTineraries(e.target.name)}>Delete</button></>))} </div>
+                <div> {filtrarTineraries.map((e) => (<> <Itinerary name={e.name} photo={e.photo[0]} descripcion={e.descripcion} price={e.price} _id={e._id} /> <button className='boton a send1' name={e._id} onClick={e => deleteTineraries(e.target.name)}>Delete</button></>))} </div>
                 </div>
             </div>
         </>

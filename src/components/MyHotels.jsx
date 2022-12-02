@@ -85,7 +85,7 @@ export default function MyHotels() {
     }
     return (
         <>
-            <div>
+            <div className='image_back3'>
             <div className='container'>
             <div className='container1'>
             <h1 className='h1_2'>Enter the Hotel information</h1>
@@ -106,7 +106,7 @@ export default function MyHotels() {
 <button className='boton a send1' onClick={e =>ValidateInfo(e)}>Edit Hotel</button>
 </form>
             </div>
-            <div> {filtrarCities.map((e, b, c) => (<> <Link to={"/hotel/" + c[b]._id}><HotelCard name={e.name} photo={e.photo} capacity={e.capacity} /></Link> <button name={e._id} onClick={e => deleteHotels(e.target.name)}>Delete</button></>))} </div>
+            <div> {filtrarCities.map((e, b, c) => (<> <Link className='none' to={"/hotel/" + c[b]._id}><HotelCard name={e.name} photo={e.photo} capacity={e.capacity} /></Link> <button name={e._id} onClick={e => deleteHotels(e.target.name)} className='boton a send1'>Delete</button></>))} </div>
             </div>
             </div>
         </>

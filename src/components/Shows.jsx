@@ -1,7 +1,8 @@
 import React from 'react'
+import Comment from './Comment'
 
 export default function show(props) {
-    let {name, photo, description, price, date} = props
+    let {name, photo, description, price, date, _id} = props
     return (
         <>
     <div>
@@ -12,6 +13,9 @@ export default function show(props) {
                 <h3 className='info-card'>{description}</h3>
                 <p className='info-card'>{price}</p>
                 <p className='info-card'>{date}</p>
+            </div>
+            <div>
+            <Comment _id={_id} />
             </div>
             </div>
             </div>

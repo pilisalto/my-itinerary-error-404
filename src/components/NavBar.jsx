@@ -62,7 +62,7 @@ export default function NavBar(props) {
                                     <Link to="/hotels" onClick={mostrar1} className='none nav_style'>Hotels</Link>
                                     <Link to="/contact" onClick={mostrar1} className='none nav_style'>Contact</Link>
                                 </>)
-                                : (role == "user" ? (<> <Link to="/cities" onClick={mostrar1} className='none nav_style'>Cities</Link>
+                                : (role === "user" ? (<> <Link to="/cities" onClick={mostrar1} className='none nav_style'>Cities</Link>
                                     <Link to="/hotels" onClick={mostrar1} className='none nav_style'>Hotels</Link>
                                     <Link to="/mytineraries" onClick={mostrar1} className='none nav_style'>My Tineraries</Link>
                                     <Link to="/myshows" onClick={mostrar1} className='none nav_style'>My Shows</Link>
@@ -94,7 +94,8 @@ export default function NavBar(props) {
                                     (<><Link to="/newhotel" onClick={mostrar} className='none nav_style'>New Hotel</Link>
                                         <Link to={"/profile"} onClick={mostrar1} className='none nav_style'>Profile</Link>
                                     </>)
-                                    : (<Link to="/newcities" onClick={mostrar} className='none nav_style'>New City</Link>)}
+                                    : (<><Link to="/newcities" onClick={mostrar} className='none nav_style'>New City</Link>
+                                    <Link to="/newreactions" onClick={mostrar} className='none nav_style'>New Reactions</Link></>)}
                             </div>
                         </>)
                     )

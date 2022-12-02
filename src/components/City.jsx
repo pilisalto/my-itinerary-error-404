@@ -32,7 +32,7 @@ export default function DetailsCity() {
 
   if(it.length){
    
-    basc = it.map(e => <Itinirary name={e.name} photo={e.photo[1]} descripcion={e.descripcion} price={e.price} />)
+    basc = it.map(e => <Itinirary name={e.name} photo={e.photo[1]} descripcion={e.descripcion} price={e.price} _id={e._id} />)
     
    
   }
@@ -41,7 +41,7 @@ export default function DetailsCity() {
   }
   return (
     <>
-      <div className='image_back4'>
+      <div className='image_back5'>
         <div className='container'>
             <Cardscity className='card none column' name={api.name} photo={api.photo} continent={api.continent} population={api.population} text={"Population: "} />
             {basc}

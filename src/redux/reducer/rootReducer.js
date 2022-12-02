@@ -6,6 +6,7 @@ import myTinerariesReducer from "./myTinerariesReducer";
 import myShowsReducer from "./myShowsReducer";
 import usersReducer from "./usersReducer";
 import signInReducer from "./signInReducer"
+import reactionReducer from "./reactionReducer";
 
 const rootReducer = {
     citiesReducer,
@@ -15,7 +16,8 @@ const rootReducer = {
     myTinerariesReducer,
     myShowsReducer,
     usersReducer,
-    signInReducer
+    signInReducer,
+    reactionReducer
 }
 
 export default rootReducer;

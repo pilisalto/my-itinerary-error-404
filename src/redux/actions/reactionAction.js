@@ -43,11 +43,53 @@ const postearReaction = createAsyncThunk("postearReaction", async (data) => {
     }
 })
 
+const eliminarReaction = createAsyncThunk("eliminarReaction", async (data) => {
+    try {
+        let headers = {headers: {'Authorization': `Bearer ${data.token}`}}
+        const res = await axios.put(`${BASE_URL}/api/reactions/${data._id}`,null,headers )
+        console.log(res)
+        return {
+            success: res.data.success,
+            response: res.data.data,
+            message: res.data.message
+        }
+    
+    }
+    catch(error){
+        return { 
+            success: false,
+            response: [],
+            message: error.response.data
+        }
+    }
+})
+
+const getReactionUser = createAsyncThunk("getReactionUser", async (data) => {
+    try {
+        const res = await axios.get(`${BASE_URL}/api/reactions?userId=${data}`)
+        return {
+            success: res.data.success,
+            response: res.data.data,
+            message: res.data.message
+        }
+    
+    }
+    catch(error){
+        console.log(error)
+        return { 
+            success: false,
+            response: [],
+            message: error
+        }
+    }
+})
 
 
 const reactionAction = {
     getReaction,
-    postearReaction
+    postearReaction,
+    eliminarReaction,
+    getReactionUser
 }
 
 export default reactionAction;

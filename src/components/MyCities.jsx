@@ -87,7 +87,7 @@ export default function MyCities() {
     }
     return (
         <>
-            <div>
+            <div className='image_back'>
             <div className='container'>
             <div className='container1'>
             <h1 className='h1_2'>Enter the City information</h1>
@@ -118,7 +118,7 @@ export default function MyCities() {
                     </div>
                 </form>
             </div>
-            <div> {filtrarCities.map((e, b, c) => (<>  <Link to={"/city/" + c[b]._id}><CityCard name={e.name} photo={e.photo} /></Link> <button name={e._id} onClick={e => deleteCity(e.target.name)}>Delete</button></>))} </div>
+            <div> {filtrarCities.map((e, b, c) => (<>  <Link className='none' to={"/city/" + c[b]._id}><CityCard name={e.name} photo={e.photo} /></Link> <button name={e._id} onClick={e => deleteCity(e.target.name)} className='boton a send1'>Delete</button></>))} </div>
             </div>
             </div>
         </>

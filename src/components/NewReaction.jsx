@@ -71,7 +71,7 @@ export default function NewReaction() {
 
     }
     return (
-        <div className='image_back2'>
+        <div className='image_back3'>
             <div className='container'>
                 <div className='container1'>
                     <h1 className='h1_2'>Enter the Reaction information</h1>
@@ -81,7 +81,7 @@ export default function NewReaction() {
                         </label>
 
                         <label className='.titulo' htmlFor="">Itineray Id</label>
-                        <input className='input' name='itineraryId' onChange={readInput} type="text" placeholder="itinerary Id" />
+                        <input className='input' name='itineraryId' onChange={readInput} type="text" placeholder="itinerary Id"/>
                         
                         <label className='.titulo' htmlFor="">Name</label>
                         <input className='input' name='name' onChange={readInput} type="text" placeholder="Name" />

@@ -21,9 +21,25 @@ let getComment = createAsyncThunk("getComment", async (data) => {
         }
     }
 })
+const postComment = createAsyncThunk("postComment", async ( idCity ) => {
+    let url = `${BASE_URL}/api/comments`;
+    let headers = {headers: {'Authorization': `Bearer ${idCity.token}`}}
+    try {
+      const res = await axios.post(url,idCity.data ,headers);
+      return {
+        success: true,
+      };
+    } catch (error) {
+      console.log(error);
+      return {
+        error: true,
+      };
+    }
+  });
 
 const commentAction = {
-    getComment
+    getComment,
+    postComment
 }
 
 export default commentAction;

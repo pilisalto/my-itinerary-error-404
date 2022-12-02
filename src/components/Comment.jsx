@@ -62,14 +62,14 @@ export default function Comment(props) {
   return (
     <>
 
-      <div> <button onClick={mostrar}>{mostrar1 ? ("Hide Comments") : ("Show Comments")}</button>
+      <div> <button className='boton a' onClick={mostrar}>{mostrar1 ? ("Hide Comments") : ("Show Comments")}</button>
         {mostrar1 ? (<div>
           <form action="">
-            <input onChange={inpt} type="text" name='text' />
-            <input onClick={sendCommit} type="submit" className='' value="send comment" />
+            <input className='comment' onChange={inpt} type="text" name='text' />
+            <input onClick={sendCommit} type="submit" className='boton a' value="Send Comment" />
           </form>
         </div>) : ("")}
-        {mostrar1 ? (comment.length > 0 ? (comment?.map(item => <> <NewComment key={item._id} user={item.userId._id} _id={item._id} photo={item.userId.photo} coments={item.comment} name={item.userId.name} /></>)) : ("NOT COMMENT")) : ("")}
+        {mostrar1 ? (comment.length > 0 ? (comment?.map(item => <> <NewComment className="container_comment" key={item._id} user={item.userId._id} _id={item._id} photo={item.userId.photo} coments={item.comment} name={item.userId.name} /></>)) : ("NOT COMMENT")) : ("")}
 
       </div>
 

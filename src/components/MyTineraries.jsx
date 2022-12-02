@@ -152,7 +152,7 @@ export default function MyTineraries() {
     }
     return (
         <>
-            <div className='image_back4'>
+            <div className='image_back'>
                 <div className='container'>
                     <div className='container1'>
                         <h1 className='h1_2'>Edit the Itinerary information</h1>

@@ -4,18 +4,18 @@ import { useSelector } from 'react-redux'
 
 export default function NewComment({photo,coments,name,user}) {
   let  {logged, role, _id} = useSelector(store => store.signInReducer)
-  let color = ""
   console.log(user , _id, logged)
   if(logged && (user === _id)){
-    color = "color"
   }
   return (
     <>
-    <div className={color}>
-      <img src="https://img.icons8.com/material-outlined/2x/pencil-tip.png" alt="edit" />
-      <img src="https://img.icons8.com/material-outlined/2x/delete-forever.png" alt="delete" />
-      <img src={photo} alt="" className='icons' />
+    <div className='container_comment'>
+      <img src={photo} alt="" className='icons'/>
       {coments}
+      <div className='end'>
+        <img src="https://img.icons8.com/material-outlined/2x/pencil-tip.png" alt="edit" className='icons'/>
+        <img src="https://img.icons8.com/material-outlined/2x/delete-forever.png" alt="delete" className='icons'/>
+      </div>
     </div>
     </>
   )

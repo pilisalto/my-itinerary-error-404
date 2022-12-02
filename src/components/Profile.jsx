@@ -133,11 +133,11 @@ export default function Profile() {
                 </div>
             </div>
             <div>
-                <button onClick={mostrar} >Reactions</button>
+                <button onClick={mostrar}>Reactions</button>
                 {mostrar1 ? reactions.map((e) => <> (
                     <>
-                        <div className='divReaction'>
-                            {e.itineraryId.name} <img src={e.itineraryId.photo[0]} className="iconImg" alt="" /> {e.name} <img src={e.iconBack} alt="" className='iconReaction' /><button value={e._id} onClick={eliminar}>X</button>
+                        <div className='container_comments'>
+                            {e.itineraryId.name} <img src={e.itineraryId.photo[0]} className="icons" alt="" /> {e.name} <img src={e.iconBack} alt="" className='icons' /><button value={e._id} onClick={eliminar}>X</button>
                         </div>
                     </>)
                 </>) : (

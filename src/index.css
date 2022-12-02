@@ -44,6 +44,28 @@ body {
   justify-items: center;
 }
 
+.container_comment{
+  min-height: 10vh;
+  min-width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-items: center;
+  background-color: #7c7c7c;
+  border-radius: 10px;
+  gap: 15px;
+  padding: 15px;
+}
+
+.end{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  justify-items: flex-end;
+  padding: 15px;
+}
+
 .padding-right{
   padding-right:10px;
 }
@@ -165,6 +187,20 @@ body {
   font-size: 16px;
   color: #d9d9d9;
   text-decoration: none;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.comment{
+  min-width: 400px;
+  border-bottom: 1px solid #d9d9d9;
+  background: white;
+  min-height: 15vh;
+  color: black;
+  font-size: 16px;
+  gap: 10px;
+  padding: 15px;
 }
 
 .icons {
@@ -213,7 +249,6 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,6 +257,7 @@ body {
   border: none;
   background: #bd2424;
   box-shadow: 0 5px #212529;
+  gap: 10px;
 }
 
 .boton:hover {

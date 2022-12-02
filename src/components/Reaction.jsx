@@ -55,7 +55,7 @@ export default function Reaction(props) {
     return (
         <>
             <div>
-                {reactions?.map(e => <>{e.userId.length === 0 ? (<img onClick={reactionPost} name={e.icon} src={e.icon} alt="icon" className='iconReaction' />) : ( <><img onClick={reactionPost} name={e.icon} src={e.iconBack} alt="icon" className='iconReaction' /> {e.userId.length} </>)}</>)}
+                {reactions?.map(e => <>{e.userId.length === 0 ? (<img className="icons" onClick={reactionPost} name={e.icon} src={e.icon} alt="icon" />) : ( <><img className="icons" onClick={reactionPost} name={e.icon} src={e.iconBack} alt="icon" /> {e.userId.length} </>)}</>)}
             </div>
         </>
     )

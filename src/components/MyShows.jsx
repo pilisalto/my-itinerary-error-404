@@ -194,7 +194,7 @@ export default function MyShows() {
                         <button className='boton a send1' onClick={e => ValidateInfo1(e)}>New Show</button>
                     </form>
                     </div>
-                    <div> {filtrarShows.map((e) => (<> <Shows Shows name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button className=' boton a send1' name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>
+                    <div> {filtrarShows.map((e) => (<> <Shows Shows _id={e._id} name={e.name} photo={e.photo} description={e.description} price={e.price} /> <button className=' boton a send1' name={e._id} onClick={e => deleteShows(e.target.name)}>Delete</button></>))} </div>
                 </div>
             </div>
         </>

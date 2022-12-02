@@ -56,6 +56,7 @@ body {
   border-radius: 10px;
   gap: 15px;
   padding: 15px;
+  justify-content: space-between;
 }
 
 .end{
@@ -195,6 +196,7 @@ body {
 .comment{
   min-width: 400px;
   border-bottom: 1px solid #d9d9d9;
+  border-radius: 15px;
   background: white;
   min-height: 15vh;
   color: black;
@@ -569,4 +571,17 @@ body {
     padding: 10px 10px 10px 10px;
     row-gap: 10px;
 } 
-
+.color{
+  min-height: 10vh;
+  min-width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-items: center;
+  border-radius: 10px;
+  gap: 15px;
+  padding: 15px;
+  justify-content: space-between;
+background-color: #d4d4d4;
+}

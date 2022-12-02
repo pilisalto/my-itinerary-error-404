@@ -69,7 +69,7 @@ export default function Comment(props) {
             <input onClick={sendCommit} type="submit" className='boton a' value="Send Comment" />
           </form>
         </div>) : ("")}
-        {mostrar1 ? (comment.length > 0 ? (comment?.map(item => <> <NewComment className="container_comment" key={item._id} user={item.userId._id} _id={item._id} photo={item.userId.photo} coments={item.comment} name={item.userId.name} /></>)) : ("NOT COMMENT")) : ("")}
+        {mostrar1 ? (comment.length > 0 ? (comment?.map(item => <> <NewComment className="container_comment" id={item._id} user={item.userId._id}  photo={item.userId.photo} coments={item.comment} name={item.userId.name} /></>)) : ("NOT COMMENT")) : ("")}
 
       </div>
 

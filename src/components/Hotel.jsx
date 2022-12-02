@@ -2,7 +2,6 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import Shows from './Shows'
 import HotelCard from './HotelCard'
-import NavBar from './NavBar'
 import { BASE_URL } from '../../src/api/url'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -29,7 +28,7 @@ export default function DetailsCity() {
   let it = apiCo.filter(e => e.hotelId === setHotel)
   let basc = ""
   if (it.length > 1) {
-    basc = it.map(e => <Shows name={e.name} photo={e.photo} description={e.description} price={e.price} />)
+    basc = it.map(e => <Shows _id={e._id} name={e.name} photo={e.photo} description={e.description} price={e.price} />)
   }
   else {
     basc = "not shows"
